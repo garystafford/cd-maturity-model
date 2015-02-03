@@ -28,7 +28,7 @@ var dataModule = (function () {
     return {
         pageTitle          : 'CD Maturity Gap Analysis: First Federated Bank',
         legendTitle        : 'Banking Systems',
-        averageTitle       : 'Average Maturity',
+        averageTitle       : 'Average Maturity - All Systems',
         idAverageCategories: 100,
         colorScale         : d3.scale.category10(),
         referenceLink_1      : 'http://en.wikipedia.org/wiki/Continuous_delivery',
@@ -243,34 +243,66 @@ var dataModule = (function () {
             ],
             [
                 {
-                    'app'  : 'Inventory Control System',
+                    'app'  : 'Mobile Banking Platform (iOS)',
                     'axis' : categories[0],
                     'value': 2
                 },
                 {
-                    'app'  : 'Inventory Control System',
+                    'app'  : 'Mobile Banking Platform (iOS)',
                     'axis' : categories[1],
                     'value': -1
                 },
                 {
-                    'app'  : 'Inventory Control System',
+                    'app'  : 'Mobile Banking Platform (iOS)',
                     'axis' : categories[2],
                     'value': -1
                 },
                 {
-                    'app'  : 'Inventory Control System',
+                    'app'  : 'Mobile Banking Platform (iOS)',
                     'axis' : categories[3],
                     'value': -1
                 },
                 {
-                    'app'  : 'Inventory Control System',
+                    'app'  : 'Mobile Banking Platform (iOS)',
                     'axis' : categories[4],
                     'value': 1
                 },
                 {
-                    'app'  : 'Inventory Control System',
+                    'app'  : 'Mobile Banking Platform (iOS)',
                     'axis' : categories[5],
                     'value': 0
+                }
+            ],
+            [
+                {
+                    'app'  : 'Mobile Banking Platform (Android)',
+                    'axis' : categories[0],
+                    'value': 1
+                },
+                {
+                    'app'  : 'Mobile Banking Platform (Android)',
+                    'axis' : categories[1],
+                    'value': 0
+                },
+                {
+                    'app'  : 'Mobile Banking Platform (Android)',
+                    'axis' : categories[2],
+                    'value': 0
+                },
+                {
+                    'app'  : 'Mobile Banking Platform (Android)',
+                    'axis' : categories[3],
+                    'value': -1
+                },
+                {
+                    'app'  : 'Mobile Banking Platform (Android)',
+                    'axis' : categories[4],
+                    'value': 1
+                },
+                {
+                    'app'  : 'Mobile Banking Platform (Android)',
+                    'axis' : categories[5],
+                    'value': 2
                 }
             ],
             [
@@ -287,7 +319,7 @@ var dataModule = (function () {
                 {
                     'app'  : 'Purchasing and Inventory Control System',
                     'axis' : categories[2],
-                    'value': 1
+                    'value': 2
                 },
                 {
                     'app'  : 'Purchasing and Inventory Control System',
