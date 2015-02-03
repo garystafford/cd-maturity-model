@@ -252,8 +252,8 @@ var radarSetupModule = (function () {
         newImg.addEventListener('click', function () {
             document.getElementById('model').className = 'hideModel';
         });
-        document.getElementById('model')
-            .appendChild(newImg);
+        document.getElementById('model').className = 'hideModel';
+        document.getElementById('model').appendChild(newImg);
     };
 
     createRefLink = function () {
