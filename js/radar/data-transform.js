@@ -7,7 +7,20 @@
  * formula: 20x + 40
  */
 
+/*properties
+    app, averageTitle, avg, axis, categories, emptyDataSet,
+    getAllAppsMaturityRating, getAppNames, getCategoryAvgs, getLegendNames,
+    getSelectedData, getSingleDataSet, getTransformedSortedData,
+    idAverageCategories, indexOf, length, localeCompare, maturityData, parse,
+    push, round, shift, sort, stringify, toLowerCase, transformScale,
+    transformScaleReverse, value
+*/
+
+/*global JSON, Math, dataModule */
+/*jslint plusplus: true */
 var dataTransformModule = (function () {
+    'use strict';
+
     var maturityData,
         sortAppData,
         sortMaturityData,
@@ -16,13 +29,17 @@ var dataTransformModule = (function () {
     maturityData = JSON.parse(JSON.stringify(dataModule.maturityData));
 
     sortMaturityData = function (data) {
-        var sortedMaturityData = [];
+        var sortedMaturityData = [],
+            appNames,
+            i,
+            j;
+
         if (data.length === 0) {
             return data;
         }
-        var appNames = dataTransformModule.getAppNames();
-        for (var i = 0; i < appNames.length; i++) {
-            for (var j = 0; j < data.length; j++) {
+        appNames = dataTransformModule.getAppNames();
+        for (i = 0; i < appNames.length; i++) {
+            for (j = 0; j < data.length; j++) {
                 if (appNames[i] === data[j][0].app) {
                     sortedMaturityData.push(data[j]);
                 }
@@ -38,40 +55,45 @@ var dataTransformModule = (function () {
         data = data.sort(function (a, b) {
             return a.toLowerCase().localeCompare(b.toLowerCase());
         });
-        if(data[0] === dataModule.averageTitle && data.length > 1) {
+        if (data[0] === dataModule.averageTitle && data.length > 1) {
             data.shift();
             data.push(dataModule.averageTitle);
         }
         return data;
     };
 
-    sortNumbers = function(data) {
+    sortNumbers = function (data) {
         return data.sort(function (a, b) {
             return a - b;
         });
     };
 
     return {
-        transformScale          : function (value) {
+        transformScale: function (value) {
             return ((value * 20) + 40);
         },
-        transformScaleReverse   : function (value) {
+        transformScaleReverse: function (value) {
             return ((value - 40) / 20);
         },
-        getAppNames             : function () {
-            var applications = [];
-            for (var i = 0; i < maturityData.length; i++) {
+        getAppNames: function () {
+            var applications = [],
+                i;
+
+            for (i = 0; i < maturityData.length; i++) {
                 applications.push(maturityData[i][0].app); //Get app from first object of each sub-array
             }
             return sortAppData(applications);
         },
-        getLegendNames          : function (currentSelections) {
-            var dataTransformed = this.getTransformedSortedData(); // Already transformed and sorted
-            var applications = [];
+        getLegendNames: function (currentSelections) {
+            // Already transformed and sorted
+            var dataTransformed = this.getTransformedSortedData(),
+                applications = [],
+                i;
+
             if (currentSelections.length === 0) { // No data available
                 return applications;
             }
-            for (var i = 0; i < currentSelections.length; i++) {
+            for (i = 0; i < currentSelections.length; i++) {
                 if (currentSelections[i] === dataModule.idAverageCategories) { // Average selected
                     applications.push(dataModule.averageTitle);
                 } else {
@@ -80,25 +102,31 @@ var dataTransformModule = (function () {
             }
             return sortAppData(applications);
         },
-        getTransformedSortedData         : function () {
-            var dataTransformed = JSON.parse(JSON.stringify(maturityData));
-            var x = 0;
-            for (var i = 0; i < dataTransformed.length; i++) {
-                for (var j = 0; j < dataTransformed[0].length; j++) {
+        getTransformedSortedData: function () {
+            var dataTransformed = JSON.parse(JSON.stringify(maturityData)),
+                x = 0,
+                i,
+                j;
+
+            for (i = 0; i < dataTransformed.length; i++) {
+                for (j = 0; j < dataTransformed[0].length; j++) {
                     x = this.transformScale(dataTransformed[i][j].value);
                     dataTransformed[i][j].value = x;
                 }
             }
             return sortMaturityData(dataTransformed);
         },
-        getSelectedData         : function (currentSelections) {
-            var dataTransformed = this.getTransformedSortedData(); // Already transformed and sorted
+        getSelectedData: function (currentSelections) {
+            // Already transformed and sorted
+            var dataTransformed = this.getTransformedSortedData(),
+                selectedData = [],
+                i;
+
             if (currentSelections.length === 0) { // No data available
                 return dataModule.emptyDataSet;
             }
             currentSelections = sortNumbers(currentSelections);
-            var selectedData = [];
-            for (var i = 0; i < currentSelections.length; i++) {
+            for (i = 0; i < currentSelections.length; i++) {
                 if (currentSelections[i] === dataModule.idAverageCategories) {
                     selectedData.push(this.getCategoryAvgs()[0]);
                 } else {
@@ -110,11 +138,14 @@ var dataTransformModule = (function () {
         // Create array of application objects containing average score,
         // as a percentage, across all categories (aka axis)
         getAllAppsMaturityRating: function () {
-            var dataAverage = [];
-            var appAverage = {};
-            var x = 0;
-            for (var i = 0; i < maturityData.length; i++) {
-                for (var j = 0; j < maturityData[0].length; j++) {
+            var dataAverage = [],
+                appAverage = {},
+                x = 0,
+                i,
+                j;
+
+            for (i = 0; i < maturityData.length; i++) {
+                for (j = 0; j < maturityData[0].length; j++) {
                     x = x + this.transformScale(maturityData[i][j].value);
                 }
                 appAverage.app = maturityData[i][0].app;
@@ -127,12 +158,15 @@ var dataTransformModule = (function () {
         },
         // Create array of categories (aka axis) objects containing average score,
         // as a percentage, across all applications
-        getCategoryAvgs         : function () {
-            var dataAverage = [];
-            var appAverage = {};
-            var x = 0;
-            for (var j = 0; j < maturityData[0].length; j++) {
-                for (var i = 0; i < maturityData.length; i++) {
+        getCategoryAvgs: function () {
+            var dataAverage = [],
+                appAverage = {},
+                x = 0,
+                i,
+                j;
+
+            for (j = 0; j < maturityData[0].length; j++) {
+                for (i = 0; i < maturityData.length; i++) {
                     x = x + this.transformScale(maturityData[i][j].value);
                 }
                 appAverage.app = dataModule.averageTitle;
@@ -144,9 +178,9 @@ var dataTransformModule = (function () {
             }
             return [dataAverage];
         },
-        getSingleDataSet        : function (appName) {
+        getSingleDataSet: function (appName) {
             var i = this.getAppNames().indexOf(appName);
             return [this.getTransformedSortedData()[i]];
         }
     };
-})();
+}());

@@ -9,7 +9,21 @@
  * http:nbremer.blogspot.nl/2013/09/making-d3-radar-chart-look-bit-better.html
  */
 
+/*properties
+    ExtraWidthX, addEventListener, app, append, appendChild, attr, checked,
+    className, colorScale, createElement, createTextNode, currentTarget, cursor,
+    data, draw, enter, getAppNames, getCategoryAvgs, getElementById,
+    getElementsByClassName, getLegendNames, getSelectedData, getSingleDataSet, h,
+    htmlFor, id, idAverageCategories, indexOf, innerHTML, legendTitle, length,
+    levels, maxValue, name, onclick, pageTitle, push, referenceLinkTitle_1,
+    referenceLink_1, select, selectAll, setAttribute, splice, style, text, type,
+    value, w
+*/
+/*global d3, dataModule, dataTransformModule, document, radarModule */
+/*jslint browser: true, plusplus: true, unparam: true */
 var radarSetupModule = (function () {
+    'use strict';
+
     var colorScale,
         checkboxes,
         config,
@@ -17,7 +31,6 @@ var radarSetupModule = (function () {
         createCheckbox,
         createLabel,
         createAppDiv,
-        createSpacer,
         createCatAvgsDiv,
         createAllAppsDiv,
         createNoAppsDiv,
@@ -35,27 +48,32 @@ var radarSetupModule = (function () {
 
     //Options for the Radar chart, other than default
     config = {
-        w          : 450,
-        h          : 450,
-        maxValue   : 100,
-        levels     : 5,
+        w: 450,
+        h: 450,
+        maxValue: 100,
+        levels: 5,
         ExtraWidthX: 550
     };
 
     //Initiate legend
     drawLegend = function () {
-        var legendOptions = dataTransformModule.getLegendNames(checkboxes);
+        var legendOptions = dataTransformModule.getLegendNames(checkboxes),
+            svg,
+            text,
+            legend;
+
         if (legendOptions.length === 0) {
             return 0;
         }
-        var svg = d3.select('#body')
+
+        svg = d3.select('#body')
             .selectAll('svg')
             .append('svg')
             .attr('width', config.w + 500)
             .attr('height', config.h);
 
         //Create the title for the legend
-        var text = svg.append('text')
+        text = svg.append('text')
             .attr('class', 'title')
             .attr('transform', 'translate(90,0)')
             .attr('x', config.w + 175 - 70)
@@ -65,7 +83,7 @@ var radarSetupModule = (function () {
             .text(dataModule.legendTitle);
 
         //Initiate Legend
-        var legend = svg.append('g')
+        legend = svg.append('g')
             .attr('class', 'legend')
             .attr('height', 100)
             .attr('width', 200)
@@ -137,9 +155,9 @@ var radarSetupModule = (function () {
     };
 
     createAppDiv = function (app, i) {
-        var newDiv = document.createElement('div');
-        var tempDataSet = dataTransformModule.getSingleDataSet(app);
-        if (typeof tempDataSet[0] === 'undefined') { // No data available
+        var newDiv = document.createElement('div'),
+            tempDataSet = dataTransformModule.getSingleDataSet(app);
+        if (tempDataSet[0] === 'undefined') { // No data available
             return newDiv;
         }
         newDiv.appendChild(createCheckbox(app, i));
@@ -150,12 +168,13 @@ var radarSetupModule = (function () {
     };
 
     createCatAvgsDiv = function () {
-        var newDiv = document.createElement('div');
-        var tempDataSet = dataTransformModule.getCategoryAvgs();
-        if (typeof tempDataSet[0] === 'undefined') { // No data available
+        var newDiv = document.createElement('div'),
+            tempDataSet = dataTransformModule.getCategoryAvgs(),
+            app;
+        if (tempDataSet[0] === 'undefined') { // No data available
             return newDiv;
         }
-        var app = tempDataSet[0][0].app;
+        app = tempDataSet[0][0].app;
         newDiv.appendChild(createCheckbox(app, dataModule.idAverageCategories));
         newDiv.appendChild(createLabel(app, dataModule.idAverageCategories));
         newDiv.style.cursor = 'pointer';
@@ -164,16 +183,18 @@ var radarSetupModule = (function () {
     };
 
     function checkAll() {
-        var cbs = document.getElementsByClassName('appCheckbox');
-        for (var i = 0; i < cbs.length; i++) {
+        var cbs = document.getElementsByClassName('appCheckbox'),
+            i;
+        for (i = 0; i < cbs.length; i++) {
             cbs[i].checked = true;
             checkboxes.push(cbs[i].data);
         }
     }
 
     function checkNone() {
-        var cbs = document.getElementsByClassName('appCheckbox');
-        for (var i = 0; i < cbs.length; i++) {
+        var cbs = document.getElementsByClassName('appCheckbox'),
+            i;
+        for (i = 0; i < cbs.length; i++) {
             cbs[i].checked = false;
         }
     }
@@ -213,13 +234,14 @@ var radarSetupModule = (function () {
     };
 
     attachDivs = function () {
-        var appNames = dataTransformModule.getAppNames();
-        var arrayLength = appNames.length;
+        var appNames = dataTransformModule.getAppNames(),
+            arrayLength = appNames.length,
+            i;
         document.getElementById('apps')
             .appendChild(createTitleDiv());
-        for (var i = 0; i < arrayLength; i++) {
+        for (i = 0; i < arrayLength; i++) {
             document.getElementById('apps')
-                .appendChild(createAppDiv(appNames[i], i))
+                .appendChild(createAppDiv(appNames[i], i));
         }
         document.getElementById('apps')
             .appendChild(createCatAvgsDiv());
@@ -278,4 +300,4 @@ var radarSetupModule = (function () {
     };
 
     initializePage();
-})();
+}());
