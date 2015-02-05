@@ -19,7 +19,7 @@
     referenceLink_1, select, selectAll, setAttribute, splice, style, text, type,
     value, w
 */
-/*global d3, dataModule, dataTransformModule, document, radarModule */
+/*global radarSetupModule: true, d3, dataModule, dataTransformModule, document, radarModule */
 /*jslint browser: true, plusplus: true, unparam: true */
 var radarSetupModule = (function () {
     'use strict';

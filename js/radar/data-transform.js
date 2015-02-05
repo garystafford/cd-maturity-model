@@ -16,7 +16,7 @@
     transformScaleReverse, value
 */
 
-/*global JSON, Math, dataModule */
+/*global dataTransformModule: true, JSON, Math, dataModule */
 /*jslint plusplus: true */
 var dataTransformModule = (function () {
     'use strict';
