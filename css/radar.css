@@ -2,8 +2,9 @@ body {
     overflow: hidden;
     margin: 0;
     font-size: 14px;
-    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
 #title {
     position: relative;
     alignment: center;
@@ -14,11 +15,13 @@ body {
     color: #ffffff;
     height: 20px;
 }
+
 #chart {
     position: relative;
     top: 20px;
     left: 280px;
 }
+
 #apps {
     position: absolute;
     top: 40px;
@@ -28,11 +31,13 @@ body {
     padding: 10px 20px 10px 10px;
     height: 100%;
 }
+
 .appDiv {
     color: #222222;
     font-weight: normal;
     padding-bottom: 5px;
 }
+
 .titleDiv {
     color: #222222;
     font-size: 12px;
@@ -41,6 +46,7 @@ body {
     padding-top: 5px;
     padding-left: 5px;
 }
+
 .specialDiv {
     color: #2c3de4;
     font-weight: normal;
@@ -48,6 +54,7 @@ body {
     padding-bottom: 5px;
     padding-left: 20px;
 }
+
 #footer {
     position: absolute;
     right: 20px;
@@ -56,6 +63,7 @@ body {
     font-size: 11px;
     text-align: right;
 }
+
 .showModel {
     position: absolute;
     top: 39px;
@@ -65,12 +73,14 @@ body {
     border: solid #666666 1px;
     opacity: 0.90;
 }
+
 .hideModel {
     visibility: hidden;
 }
+
 .footerLinks {
     color: #2c3de4;
     font-weight: normal;
     cursor: pointer;
-    text-decoration:none;
+    text-decoration: none;
 }
