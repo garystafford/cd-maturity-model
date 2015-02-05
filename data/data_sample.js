@@ -3,6 +3,12 @@
  * https://github.com/garystafford
  */
 
+/*properties
+ app, averageTitle, axis, categories, category10, colorScale, definition,
+ emptyDataSet, idAverageCategories, legendTitle, maturityData, maturityLevels,
+ pageTitle, referenceLinkTitle_1, referenceLink_1, scale, score, value
+ */
+
 /*global dataModule: true, d3 */
 var dataModule = (function () {
     'use strict';
