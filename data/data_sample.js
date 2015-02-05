@@ -1,6 +1,6 @@
 /**
  * Created by Gary A. Stafford on 1/29/15.
- * https://github.com/garystafford
+ * https://github.com/garystafford/cd-maturity-model
  */
 
 /*properties

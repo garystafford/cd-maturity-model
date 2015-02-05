@@ -1,6 +1,6 @@
 /**
  * Created by Gary A. Stafford on 1/29/15.
- * https://github.com/garystafford
+ * https://github.com/garystafford/cd-maturity-model
  *
  * Source code based project by Nadieh Bremer:
  * http://www.visualcinnamon.com/2013/09/making-d3-radar-chart-look-bit-better.html
@@ -57,10 +57,12 @@ var radarSetupModule = (function () {
 
     //Initiate legend
     drawLegend = function () {
-        var legendOptions = dataTransformModule.getLegendNames(checkboxes),
+        var legendOptions,
             svg,
             text,
             legend;
+
+        legendOptions = dataTransformModule.getLegendNames(checkboxes);
 
         if (legendOptions.length === 0) {
             return 0;
@@ -155,8 +157,11 @@ var radarSetupModule = (function () {
     };
 
     createAppDiv = function (app, i) {
-        var newDiv = document.createElement('div'),
-            tempDataSet = dataTransformModule.getSingleDataSet(app);
+        var newDiv,
+            tempDataSet;
+
+        newDiv = document.createElement('div');
+        tempDataSet = dataTransformModule.getSingleDataSet(app);
         if (tempDataSet[0] === 'undefined') { // No data available
             return newDiv;
         }
@@ -168,9 +173,12 @@ var radarSetupModule = (function () {
     };
 
     createCatAvgsDiv = function () {
-        var newDiv = document.createElement('div'),
-            tempDataSet = dataTransformModule.getCategoryAvgs(),
+        var newDiv,
+            tempDataSet,
             app;
+
+        newDiv = document.createElement('div');
+        tempDataSet = dataTransformModule.getCategoryAvgs();
         if (tempDataSet[0] === 'undefined') { // No data available
             return newDiv;
         }
@@ -183,8 +191,10 @@ var radarSetupModule = (function () {
     };
 
     function checkAll() {
-        var cbs = document.getElementsByClassName('appCheckbox'),
+        var cbs,
             i;
+
+        cbs = document.getElementsByClassName('appCheckbox');
         for (i = 0; i < cbs.length; i++) {
             cbs[i].checked = true;
             checkboxes.push(cbs[i].data);
@@ -192,8 +202,10 @@ var radarSetupModule = (function () {
     }
 
     function checkNone() {
-        var cbs = document.getElementsByClassName('appCheckbox'),
+        var cbs,
             i;
+
+        cbs = document.getElementsByClassName('appCheckbox');
         for (i = 0; i < cbs.length; i++) {
             cbs[i].checked = false;
         }
@@ -234,9 +246,12 @@ var radarSetupModule = (function () {
     };
 
     attachDivs = function () {
-        var appNames = dataTransformModule.getAppNames(),
-            arrayLength = appNames.length,
+        var appNames,
+            arrayLength,
             i;
+
+        appNames = dataTransformModule.getAppNames();
+        arrayLength = appNames.length;
         document.getElementById('apps')
             .appendChild(createTitleDiv());
         for (i = 0; i < arrayLength; i++) {

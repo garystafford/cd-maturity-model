@@ -1,6 +1,6 @@
 /**
  * Created by Gary A. Stafford on 1/29/15.
- * https://github.com/garystafford
+ * https://github.com/garystafford/cd-maturity-model
  *
  * Source code based project by Nadieh Bremer:
  * http://www.visualcinnamon.com/2013/09/making-d3-radar-chart-look-bit-better.html
