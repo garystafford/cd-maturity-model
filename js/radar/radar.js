@@ -10,17 +10,18 @@
  */
 
 /*properties
-    ExtraWidthX, ExtraWidthY, PI, ToRight, TranslateX, TranslateY, append, attr,
-    axis, categories, color, colorScale, cos, data, draw, enter, factor,
-    factorLegend, forEach, format, h, hasOwnProperty, length, levels, map, max,
-    maxValue, min, on, opacityArea, push, radians, radius, remove, select,
-    selectAll, sin, style, text, transformScaleReverse, transition, value, w
-*/
+ ExtraWidthX, ExtraWidthY, PI, ToRight, TranslateX, TranslateY, append, attr,
+ axis, categories, color, colorScale, cos, data, draw, enter, factor,
+ factorLegend, forEach, format, h, hasOwnProperty, length, levels, map, max,
+ maxValue, min, on, opacityArea, push, radians, radius, remove, select,
+ selectAll, sin, style, text, transformScaleReverse, transition, value, w
+ */
 
 /*global radarModule: true, Math, d3, dataModule, dataTransformModule, parseFloat */
 /*jslint plusplus: true, unparam: true */
 var radarModule = (function () {
     'use strict';
+
     return {
         draw: function (id, d, options) {
             var cfg,
@@ -42,21 +43,21 @@ var radarModule = (function () {
                 newY;
 
             cfg = {
-                radius: 5,
-                w: 600,
-                h: 600,
-                factor: 1,
+                radius      : 5,
+                w           : 600,
+                h           : 600,
+                factor      : 1,
                 factorLegend: 0.85,
-                levels: 3,
-                maxValue: 100,
-                radians: 2 * Math.PI,
-                opacityArea: 0.5,
-                ToRight: 5,
-                TranslateX: 90,
-                TranslateY: 30,
-                ExtraWidthX: 100,
-                ExtraWidthY: 100,
-                color: dataModule.colorScale
+                levels      : 3,
+                maxValue    : 100,
+                radians     : 2 * Math.PI,
+                opacityArea : 0.5,
+                ToRight     : 5,
+                TranslateX  : 90,
+                TranslateY  : 30,
+                ExtraWidthX : 100,
+                ExtraWidthY : 100,
+                color       : dataModule.colorScale
             };
 
             if (options !== 'undefined') {
@@ -93,6 +94,22 @@ var radarModule = (function () {
                 .append('g')
                 .attr('transform', 'translate(' + cfg.TranslateX + ',' + cfg.TranslateY + ')');
 
+            function calcX1(d, i) {
+                return levelFactor * (1 - cfg.factor * Math.sin(i * cfg.radians / total));
+            }
+
+            function calcY1(d, i) {
+                return levelFactor * (1 - cfg.factor * Math.cos(i * cfg.radians / total));
+            }
+
+            function calcX2(d, i) {
+                return levelFactor * (1 - cfg.factor * Math.sin((i + 1) * cfg.radians / total));
+            }
+
+            function calcY2(d, i) {
+                return levelFactor * (1 - cfg.factor * Math.cos((i + 1) * cfg.radians / total));
+            }
+
             //Circular segments
             for (j = 0; j < cfg.levels; j++) {
                 levelFactor = cfg.factor * radius * ((j + 1) / cfg.levels);
@@ -100,24 +117,24 @@ var radarModule = (function () {
                     .data(allAxis)
                     .enter()
                     .append('svg:line')
-                    .attr('x1', function (d, i) {
-                        return levelFactor * (1 - cfg.factor * Math.sin(i * cfg.radians / total));
-                    })
-                    .attr('y1', function (d, i) {
-                        return levelFactor * (1 - cfg.factor * Math.cos(i * cfg.radians / total));
-                    })
-                    .attr('x2', function (d, i) {
-                        return levelFactor * (1 - cfg.factor * Math.sin((i + 1) * cfg.radians / total));
-                    })
-                    .attr('y2', function (d, i) {
-                        return levelFactor * (1 - cfg.factor * Math.cos((i + 1) * cfg.radians / total));
-                    })
+                    .attr('x1', calcX1)
+                    .attr('y1', calcY1)
+                    .attr('x2', calcX2)
+                    .attr('y2', calcY2)
                     .attr('class', 'line')
                     .style('stroke', '#999999')
                     .style('stroke-opacity', '0.75')
                     .style('stroke-width', '.5px')
                     .attr('transform', 'translate(' + (cfg.w / 2 - levelFactor) + ', ' +
                         (cfg.h / 2 - levelFactor) + ')');
+            }
+
+            function calcX(d) {
+                return levelFactor * (1 - cfg.factor * Math.sin(0));
+            }
+
+            function calcY(d) {
+                return levelFactor * (1 - cfg.factor * Math.cos(0));
             }
 
             if (d[0].length > 0) { //If data was supplied
@@ -128,12 +145,8 @@ var radarModule = (function () {
                         .data([1])
                         .enter()
                         .append('svg:text')
-                        .attr('x', function (d) {
-                            return levelFactor * (1 - cfg.factor * Math.sin(0));
-                        })
-                        .attr('y', function (d) {
-                            return levelFactor * (1 - cfg.factor * Math.cos(0));
-                        })
+                        .attr('x', calcX)
+                        .attr('y', calcY)
                         .attr('class', 'legend')
                         .style('font-family', 'sans-serif')
                         .style('font-size', '11px')
@@ -191,9 +204,9 @@ var radarModule = (function () {
                         .data(y, function (j, i) {
                             dataValues.push([
                                 cfg.w / 2 * (1 - (parseFloat(Math.max(j.value, 0)) / cfg.maxValue) *
-                                    cfg.factor * Math.sin(i * cfg.radians / total)),
+                                cfg.factor * Math.sin(i * cfg.radians / total)),
                                 cfg.h / 2 * (1 - (parseFloat(Math.max(j.value, 0)) / cfg.maxValue) *
-                                    cfg.factor * Math.cos(i * cfg.radians / total))
+                                cfg.factor * Math.cos(i * cfg.radians / total))
                             ]);
                         });
                     dataValues.push(dataValues[0]);
@@ -245,9 +258,9 @@ var radarModule = (function () {
                         .attr('cx', function (j, i) {
                             dataValues.push([
                                 cfg.w / 2 * (1 - (parseFloat(Math.max(j.value, 0)) / cfg.maxValue) *
-                                    cfg.factor * Math.sin(i * cfg.radians / total)),
+                                cfg.factor * Math.sin(i * cfg.radians / total)),
                                 cfg.h / 2 * (1 - (parseFloat(Math.max(j.value, 0)) / cfg.maxValue) *
-                                    cfg.factor * Math.cos(i * cfg.radians / total))
+                                cfg.factor * Math.cos(i * cfg.radians / total))
                             ]);
                             return cfg.w / 2 * (1 - (Math.max(j.value, 0) / cfg.maxValue) * cfg.factor *
                                 Math.sin(i * cfg.radians / total));
