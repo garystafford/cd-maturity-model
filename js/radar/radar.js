@@ -19,9 +19,9 @@
 
 /*global Math, d3, dataSample, transform, parseFloat, define */
 /*jslint plusplus: true, unparam: true */
-define(['./../data/data', './../d3/d3.min', './transform'],
+define(["./../data/data", "./../d3/d3.min", "./transform"],
     function (dataSample, d3, transform) {
-        'use strict';
+        "use strict";
 
         return {
             draw: function (id, d, options) {
@@ -61,10 +61,10 @@ define(['./../data/data', './../d3/d3.min', './transform'],
                     color       : dataSample.colorScale
                 };
 
-                if (options !== 'undefined') {
+                if (options !== "undefined") {
                     for (i in options) {
                         if (options.hasOwnProperty(i)) {
-                            if ('undefined' !== options[i]) {
+                            if ("undefined" !== options[i]) {
                                 cfg[i] = options[i];
                             }
                         }
@@ -85,15 +85,15 @@ define(['./../data/data', './../d3/d3.min', './transform'],
 
                 total = allAxis.length;
                 radius = cfg.factor * Math.min(cfg.w / 2, cfg.h / 2);
-                format = d3.format('d');
-                d3.select(id).select('svg').remove();
+                format = d3.format("d");
+                d3.select(id).select("svg").remove();
 
                 g = d3.select(id)
-                    .append('svg')
-                    .attr('width', cfg.w + cfg.ExtraWidthX)
-                    .attr('height', cfg.h + cfg.ExtraWidthY)
-                    .append('g')
-                    .attr('transform', 'translate(' + cfg.TranslateX + ',' + cfg.TranslateY + ')');
+                    .append("svg")
+                    .attr("width", cfg.w + cfg.ExtraWidthX)
+                    .attr("height", cfg.h + cfg.ExtraWidthY)
+                    .append("g")
+                    .attr("transform", "translate(" + cfg.TranslateX + "," + cfg.TranslateY + ")");
 
                 function calcX1(d, i) {
                     return levelFactor * (1 - cfg.factor * Math.sin(i * cfg.radians / total));
@@ -114,20 +114,20 @@ define(['./../data/data', './../d3/d3.min', './transform'],
                 //Circular segments
                 for (j = 0; j < cfg.levels; j++) {
                     levelFactor = cfg.factor * radius * ((j + 1) / cfg.levels);
-                    g.selectAll('.levels')
+                    g.selectAll(".levels")
                         .data(allAxis)
                         .enter()
-                        .append('svg:line')
-                        .attr('x1', calcX1)
-                        .attr('y1', calcY1)
-                        .attr('x2', calcX2)
-                        .attr('y2', calcY2)
-                        .attr('class', 'line')
-                        .style('stroke', '#999999')
-                        .style('stroke-opacity', '0.75')
-                        .style('stroke-width', '.5px')
-                        .attr('transform', 'translate(' + (cfg.w / 2 - levelFactor) + ', ' +
-                        (cfg.h / 2 - levelFactor) + ')');
+                        .append("svg:line")
+                        .attr("x1", calcX1)
+                        .attr("y1", calcY1)
+                        .attr("x2", calcX2)
+                        .attr("y2", calcY2)
+                        .attr("class", "line")
+                        .style("stroke", "#999999")
+                        .style("stroke-opacity", "0.75")
+                        .style("stroke-width", ".5px")
+                        .attr("transform", "translate(" + (cfg.w / 2 - levelFactor) + ", " +
+                            (cfg.h / 2 - levelFactor) + ")");
                 }
 
                 function calcX(d) {
@@ -142,66 +142,66 @@ define(['./../data/data', './../d3/d3.min', './transform'],
                     //Text indicating at what % each level is
                     for (j = 0; j < cfg.levels; j++) {
                         levelFactor = cfg.factor * radius * ((j + 1) / cfg.levels);
-                        g.selectAll('.levels')
+                        g.selectAll(".levels")
                             .data([1])
                             .enter()
-                            .append('svg:text')
-                            .attr('x', calcX)
-                            .attr('y', calcY)
-                            .attr('class', 'legend')
-                            .style('font-family', 'sans-serif')
-                            .style('font-size', '11px')
-                            .attr('transform', 'translate(' + (cfg.w / 2 - levelFactor + cfg.ToRight) + ', ' +
-                            (cfg.h / 2 - levelFactor) + ')')
-                            .attr('fill', '#999999')
+                            .append("svg:text")
+                            .attr("x", calcX)
+                            .attr("y", calcY)
+                            .attr("class", "legend")
+                            .style("font-family", "sans-serif")
+                            .style("font-size", "11px")
+                            .attr("transform", "translate(" + (cfg.w / 2 - levelFactor + cfg.ToRight) + ", " +
+                                (cfg.h / 2 - levelFactor) + ")")
+                            .attr("fill", "#999999")
                             .text(format(transform.transformScaleReverse(((j + 1) * cfg.maxValue / cfg.levels))));
                     }
 
                     series = 0;
 
-                    axis = g.selectAll('.axis')
+                    axis = g.selectAll(".axis")
                         .data(allAxis)
                         .enter()
-                        .append('g')
-                        .attr('class', 'axis');
+                        .append("g")
+                        .attr("class", "axis");
 
-                    axis.append('line')
-                        .attr('x1', cfg.w / 2)
-                        .attr('y1', cfg.h / 2)
-                        .attr('x2', function (d, i) {
+                    axis.append("line")
+                        .attr("x1", cfg.w / 2)
+                        .attr("y1", cfg.h / 2)
+                        .attr("x2", function (d, i) {
                             return cfg.w / 2 * (1 - cfg.factor * Math.sin(i * cfg.radians / total));
                         })
-                        .attr('y2', function (d, i) {
+                        .attr("y2", function (d, i) {
                             return cfg.h / 2 * (1 - cfg.factor * Math.cos(i * cfg.radians / total));
                         })
-                        .attr('class', 'line')
-                        .style('stroke', '#999999')
-                        .style('stroke-width', '.75px');
+                        .attr("class", "line")
+                        .style("stroke", "#999999")
+                        .style("stroke-width", ".75px");
 
-                    axis.append('text')
-                        .attr('class', 'legend')
+                    axis.append("text")
+                        .attr("class", "legend")
                         .text(function (d) {
                             return d;
                         })
-                        .style('font-family', 'sans-serif')
-                        .style('font-size', '11px')
-                        .attr('text-anchor', 'middle')
-                        .attr('dy', '1.5em')
-                        .attr('transform', function (d, i) {
-                            return 'translate(0, -10)';
+                        .style("font-family", "sans-serif")
+                        .style("font-size", "11px")
+                        .attr("text-anchor", "middle")
+                        .attr("dy", "1.5em")
+                        .attr("transform", function (d, i) {
+                            return "translate(0, -10)";
                         })
-                        .attr('x', function (d, i) {
+                        .attr("x", function (d, i) {
                             return cfg.w / 2 * (1 - cfg.factorLegend * Math.sin(i * cfg.radians / total)) -
                                 60 * Math.sin(i * cfg.radians / total);
                         })
-                        .attr('y', function (d, i) {
+                        .attr("y", function (d, i) {
                             return cfg.h / 2 * (1 - Math.cos(i * cfg.radians / total)) -
                                 20 * Math.cos(i * cfg.radians / total);
                         });
 
                     d.forEach(function (y, x) {
                         dataValues = [];
-                        g.selectAll('.nodes')
+                        g.selectAll(".nodes")
                             .data(y, function (j, i) {
                                 dataValues.push([
                                     cfg.w / 2 * (1 - (parseFloat(Math.max(j.value, 0)) / cfg.maxValue) *
@@ -211,52 +211,52 @@ define(['./../data/data', './../d3/d3.min', './transform'],
                                 ]);
                             });
                         dataValues.push(dataValues[0]);
-                        g.selectAll('.area')
+                        g.selectAll(".area")
                             .data([dataValues])
                             .enter()
-                            .append('polygon')
-                            .attr('class', 'radar-chart-series' + series)
-                            .style('stroke-width', '2px')
-                            .style('stroke', cfg.color(series))
-                            .attr('points', function (d) {
-                                var str = '';
+                            .append("polygon")
+                            .attr("class", "radar-chart-series" + series)
+                            .style("stroke-width", "2px")
+                            .style("stroke", cfg.color(series))
+                            .attr("points", function (d) {
+                                var str = "";
                                 for (pti = 0; pti < d.length; pti++) {
-                                    str = str + d[pti][0] + ',' + d[pti][1] + ' ';
+                                    str = str + d[pti][0] + "," + d[pti][1] + " ";
                                 }
                                 return str;
                             })
-                            .style('fill', function (d, i) {
+                            .style("fill", function (d, i) {
                                 return cfg.color(series);
                             })
-                            .style('fill-opacity', cfg.opacityArea)
-                            .on('mouseover', function (d) {
-                                z = 'polygon.' + d3.select(this).attr('class');
-                                g.selectAll('polygon')
+                            .style("fill-opacity", cfg.opacityArea)
+                            .on("mouseover", function (d) {
+                                z = "polygon." + d3.select(this).attr("class");
+                                g.selectAll("polygon")
                                     .transition(200)
-                                    .style('fill-opacity', 0.1);
+                                    .style("fill-opacity", 0.1);
                                 g.selectAll(z)
                                     .transition(200)
-                                    .style('fill-opacity', 0.7);
+                                    .style("fill-opacity", 0.7);
                             })
-                            .on('mouseout', function () {
-                                g.selectAll('polygon')
+                            .on("mouseout", function () {
+                                g.selectAll("polygon")
                                     .transition(200)
-                                    .style('fill-opacity', cfg.opacityArea);
+                                    .style("fill-opacity", cfg.opacityArea);
                             });
                         series++;
                     });
                     series = 0;
 
                     d.forEach(function (y, x) {
-                        g.selectAll('.nodes')
+                        g.selectAll(".nodes")
                             .data(y).enter()
-                            .append('svg:circle')
-                            .attr('class', 'radar-chart-series' + series)
-                            .attr('r', cfg.radius)
-                            .attr('alt', function (j) {
+                            .append("svg:circle")
+                            .attr("class", "radar-chart-series" + series)
+                            .attr("r", cfg.radius)
+                            .attr("alt", function (j) {
                                 return Math.max(j.value, 0);
                             })
-                            .attr('cx', function (j, i) {
+                            .attr("cx", function (j, i) {
                                 dataValues.push([
                                     cfg.w / 2 * (1 - (parseFloat(Math.max(j.value, 0)) / cfg.maxValue) *
                                     cfg.factor * Math.sin(i * cfg.radians / total)),
@@ -266,50 +266,50 @@ define(['./../data/data', './../d3/d3.min', './transform'],
                                 return cfg.w / 2 * (1 - (Math.max(j.value, 0) / cfg.maxValue) * cfg.factor *
                                     Math.sin(i * cfg.radians / total));
                             })
-                            .attr('cy', function (j, i) {
+                            .attr("cy", function (j, i) {
                                 return cfg.h / 2 * (1 - (Math.max(j.value, 0) / cfg.maxValue) * cfg.factor *
                                     Math.cos(i * cfg.radians / total));
                             })
-                            .attr('data-id', function (j) {
+                            .attr("data-id", function (j) {
                                 return j.axis;
                             })
-                            .style('fill', cfg.color(series)).style('fill-opacity', 0.9)
-                            .on('mouseover', function (d) {
-                                newX = parseFloat(d3.select(this).attr('cx')) - 10;
-                                newY = parseFloat(d3.select(this).attr('cy')) - 5;
+                            .style("fill", cfg.color(series)).style("fill-opacity", 0.9)
+                            .on("mouseover", function (d) {
+                                newX = parseFloat(d3.select(this).attr("cx")) - 10;
+                                newY = parseFloat(d3.select(this).attr("cy")) - 5;
 
                                 tooltip
-                                    .attr('x', newX)
-                                    .attr('y', newY)
+                                    .attr("x", newX)
+                                    .attr("y", newY)
                                     .text(transform.transformScaleReverse(d.value))
                                     .transition(200)
-                                    .style('opacity', 1);
+                                    .style("opacity", 1);
 
-                                z = 'polygon.' + d3.select(this).attr('class');
-                                g.selectAll('polygon')
+                                z = "polygon." + d3.select(this).attr("class");
+                                g.selectAll("polygon")
                                     .transition(200)
-                                    .style('fill-opacity', 0.1);
+                                    .style("fill-opacity", 0.1);
                                 g.selectAll(z)
                                     .transition(200)
-                                    .style('fill-opacity', 0.7);
+                                    .style("fill-opacity", 0.7);
                             })
-                            .on('mouseout', function () {
+                            .on("mouseout", function () {
                                 tooltip
                                     .transition(200)
-                                    .style('opacity', 0);
-                                g.selectAll('polygon')
+                                    .style("opacity", 0);
+                                g.selectAll("polygon")
                                     .transition(200)
-                                    .style('fill-opacity', cfg.opacityArea);
+                                    .style("fill-opacity", cfg.opacityArea);
                             });
 
                         series++;
                     });
 
                     //Tooltip
-                    tooltip = g.append('text')
-                        .style('opacity', 0)
-                        .style('font-family', 'sans-serif')
-                        .style('font-size', '13px');
+                    tooltip = g.append("text")
+                        .style("opacity", 0)
+                        .style("font-family", "sans-serif")
+                        .style("font-size", "13px");
                 }
             }
         };

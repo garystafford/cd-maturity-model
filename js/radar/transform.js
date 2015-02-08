@@ -18,8 +18,8 @@
 
 /*global JSON, Math, define */
 /*jslint plusplus: true */
-define(['./../data/data'], function (dataSample) {
-    'use strict';
+define(["./../data/data"], function (dataSample) {
+    "use strict";
 
     var maturityData,
         sortAppData,

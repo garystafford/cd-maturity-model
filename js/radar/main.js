@@ -1,2 +1,2 @@
 /*global require */
-require(['./setup']);
+require(["./setup"]);

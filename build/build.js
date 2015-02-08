@@ -9,13 +9,9 @@
  */
 
 ({
-    baseUrl               : '../js/radar',
-    name                  : './main',
-    out                   : '../dist/main-built.js',
+    baseUrl               : "../js/radar",
+    name                  : "./main",
+    out                   : "../dist/main-built.js",
     enforceDefine         : true,
     findNestedDependencies: true
 })
-
-//exclude: ['./../d3/d3'],
-//name   : './setup',
-
