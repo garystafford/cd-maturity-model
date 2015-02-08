@@ -13,7 +13,7 @@ Module-based project uses RequireJS. After making any changes, optimize the proj
  npm install -g requirejs
  cd ~/WebstormProjects/cd-maturity-model
  node build/r.js -o build/build.js
- # Alternately, combines but don't minify
+ # Alternately, combine but don't minify
  #node build/r.js -o build/build.js optimize=none
  node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
  ```
