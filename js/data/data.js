@@ -10,7 +10,7 @@
  */
 
 /*global d3, define */
-define(['./../d3/d3'], function (d3) {
+define(['./../d3/d3.min'], function (d3) {
     'use strict';
     var categories,
         maturityLevels;
