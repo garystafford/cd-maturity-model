@@ -7,6 +7,17 @@ Browser-based tool, using [d3](http://d3js.org/) JavaScript library. Visualizati
 ### Preview with Sample Data
 [![CD Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/master/images/screenshot_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/master/images/screenshot.png?raw=true)
 
+### Optimize Project
+Module-based project uses RequireJS. After making any changes, optimize the project using RequireJS Optimizer. Combines related scripts together into build layers and minifies them via UglifyJS (the default).
+ ```
+ npm install -g requirejs
+ cd ~/WebstormProjects/cd-maturity-model
+ node build/r.js -o build/build.js
+ # Alternately, combines but don't minify
+ #node build/r.js -o build/build.js optimize=none
+ node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
+ ```
+
 ### Helpful Links:
 * d3 and Radar Charts
  * http://www.visualcinnamon.com/2013/09/making-d3-radar-chart-look-bit-better.html
