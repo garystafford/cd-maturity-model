@@ -10,20 +10,19 @@
  */
 
 /*properties
-    ExtraWidthX, addEventListener, app, append, appendChild, attr, checked,
-    className, colorScale, createElement, createTextNode, currentTarget, cursor,
-    data, draw, enter, getAppNames, getCategoryAvgs, getElementById,
-    getElementsByClassName, getLegendNames, getSelectedData, getSingleDataSet, h,
-    htmlFor, id, idAverageCategories, indexOf, innerHTML, legendTitle, length,
-    levels, maxValue, name, onclick, pageTitle, push, referenceLinkTitle_1,
-    referenceLink_1, select, selectAll, setAttribute, splice, style, text, type,
-    value, w
-*/
-/*global radarSetupModule: true, d3, dataModule, dataTransformModule, document, radarModule */
+ ExtraWidthX, addEventListener, app, append, appendChild, attr, checked,
+ className, colorScale, createElement, createTextNode, currentTarget, cursor,
+ data, draw, enter, getAppNames, getCategoryAvgs, getElementById,
+ getElementsByClassName, getLegendNames, getSelectedData, getSingleDataSet, h,
+ htmlFor, id, idAverageCategories, indexOf, innerHTML, legendTitle, length,
+ levels, maxValue, name, onclick, pageTitle, push, referenceLinkTitle_1,
+ referenceLink_1, select, selectAll, setAttribute, splice, style, text, type,
+ value, w
+ */
+/*global d3, dataSample, transform, document, radar, define */
 /*jslint browser: true, plusplus: true, unparam: true */
-var radarSetupModule = (function () {
+define(['./../data/data', './transform', './radar'], function (dataSample, transform, radar) {
     'use strict';
-
     var colorScale,
         checkboxes,
         config,
@@ -41,17 +40,17 @@ var radarSetupModule = (function () {
         createRefLink,
         initializePage;
 
-    colorScale = dataModule.colorScale;
+    colorScale = dataSample.colorScale;
 
     //Tracks checkboxes
     checkboxes = [];
 
     //Options for the Radar chart, other than default
     config = {
-        w: 450,
-        h: 450,
-        maxValue: 100,
-        levels: 5,
+        w          : 450,
+        h          : 450,
+        maxValue   : 100,
+        levels     : 5,
         ExtraWidthX: 550
     };
 
@@ -62,9 +61,9 @@ var radarSetupModule = (function () {
             text,
             legend;
 
-        legendOptions = dataTransformModule.getLegendNames(checkboxes);
+        legendOptions = transform.getLegendNames(checkboxes);
 
-        if (legendOptions.length === 0) {
+        if (typeof legendOptions === 'undefined') {
             return 0;
         }
 
@@ -82,7 +81,7 @@ var radarSetupModule = (function () {
             .attr('y', 10)
             .attr('font-size', '12px')
             .attr('fill', '#404040')
-            .text(dataModule.legendTitle);
+            .text(dataSample.legendTitle);
 
         //Initiate Legend
         legend = svg.append('g')
@@ -122,7 +121,7 @@ var radarSetupModule = (function () {
             });
         //.attr('onmouseover', "evt.target.setAttribute('opacity', '0.5');")
         //.attr('onmouseout', "evt.target.setAttribute('opacity','1)');")
-        //.attr('onclick', "radarModule.draw('#chart', dataTransformModule.getSingleDataSet(this.textContent), this.config);drawLegend();")
+        //.attr('onclick', "radar.draw('#chart', transform.getSingleDataSet(this.textContent), this.config);drawLegend();")
         //.style('cursor', 'pointer');
     };
 
@@ -143,7 +142,7 @@ var radarSetupModule = (function () {
                     checkboxes.splice(index, 1);
                 }
             }
-            radarModule.draw('#chart', dataTransformModule.getSelectedData(checkboxes), config);
+            radar.draw('#chart', transform.getSelectedData(checkboxes), config);
             drawLegend();
         };
         return newCheckbox;
@@ -161,8 +160,8 @@ var radarSetupModule = (function () {
             tempDataSet;
 
         newDiv = document.createElement('div');
-        tempDataSet = dataTransformModule.getSingleDataSet(app);
-        if (tempDataSet[0] === 'undefined') { // No data available
+        tempDataSet = transform.getSingleDataSet(app);
+        if (typeof tempDataSet === 'undefined') { // No data available
             return newDiv;
         }
         newDiv.appendChild(createCheckbox(app, i));
@@ -178,13 +177,13 @@ var radarSetupModule = (function () {
             app;
 
         newDiv = document.createElement('div');
-        tempDataSet = dataTransformModule.getCategoryAvgs();
-        if (tempDataSet[0] === 'undefined') { // No data available
+        tempDataSet = transform.getCategoryAvgs();
+        if (typeof tempDataSet[0] === 'undefined') { // No data available
             return newDiv;
         }
         app = tempDataSet[0][0].app;
-        newDiv.appendChild(createCheckbox(app, dataModule.idAverageCategories));
-        newDiv.appendChild(createLabel(app, dataModule.idAverageCategories));
+        newDiv.appendChild(createCheckbox(app, dataSample.idAverageCategories));
+        newDiv.appendChild(createLabel(app, dataSample.idAverageCategories));
         newDiv.style.cursor = 'pointer';
         newDiv.className = 'appDiv';
         return newDiv;
@@ -219,7 +218,7 @@ var radarSetupModule = (function () {
         newDiv.addEventListener('click', function () {
             checkboxes = [];
             checkAll();
-            radarModule.draw('#chart', dataTransformModule.getSelectedData(checkboxes), config);
+            radar.draw('#chart', transform.getSelectedData(checkboxes), config);
             drawLegend();
         });
         return newDiv;
@@ -232,7 +231,7 @@ var radarSetupModule = (function () {
         newDiv.addEventListener('click', function () {
             checkboxes = [];
             checkNone();
-            radarModule.draw('#chart', dataTransformModule.getSelectedData(checkboxes), config);
+            radar.draw('#chart', transform.getSelectedData(checkboxes), config);
             drawLegend();
         });
         return newDiv;
@@ -240,7 +239,7 @@ var radarSetupModule = (function () {
 
     createTitleDiv = function () {
         var newDiv = document.createElement('div');
-        newDiv.innerHTML = dataModule.legendTitle;
+        newDiv.innerHTML = dataSample.legendTitle;
         newDiv.className = 'titleDiv';
         return newDiv;
     };
@@ -250,7 +249,7 @@ var radarSetupModule = (function () {
             arrayLength,
             i;
 
-        appNames = dataTransformModule.getAppNames();
+        appNames = transform.getAppNames();
         arrayLength = appNames.length;
         document.getElementById('apps')
             .appendChild(createTitleDiv());
@@ -296,18 +295,18 @@ var radarSetupModule = (function () {
     createRefLink = function () {
         var newLink = document.createElement('a');
         newLink.className = 'footerLinks';
-        newLink.setAttribute('href', dataModule.referenceLink_1);
-        newLink.innerHTML = dataModule.referenceLinkTitle_1;
+        newLink.setAttribute('href', dataSample.referenceLink_1);
+        newLink.innerHTML = dataSample.referenceLinkTitle_1;
         document.getElementById('footer')
             .appendChild(newLink);
     };
 
     initializePage = function () {
-        document.getElementById('title').innerHTML = dataModule.pageTitle;
-        radarModule.draw('#chart', dataTransformModule.getCategoryAvgs(), config);
+        document.getElementById('title').innerHTML = dataSample.pageTitle;
+        radar.draw('#chart', transform.getCategoryAvgs(), config);
         attachDivs();
         document.getElementById('app100').checked = true;
-        checkboxes.push(dataModule.idAverageCategories);
+        checkboxes.push(dataSample.idAverageCategories);
         drawLegend();
         createModelPopup();
         createModelImg();
@@ -315,4 +314,4 @@ var radarSetupModule = (function () {
     };
 
     initializePage();
-}());
+});

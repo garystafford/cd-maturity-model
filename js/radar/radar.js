@@ -17,9 +17,9 @@
  selectAll, sin, style, text, transformScaleReverse, transition, value, w
  */
 
-/*global radarModule: true, Math, d3, dataModule, dataTransformModule, parseFloat */
+/*global Math, d3, dataSample, transform, parseFloat, define */
 /*jslint plusplus: true, unparam: true */
-var radarModule = (function () {
+define(['./../data/data', './transform'], function (dataSample, transform) {
     'use strict';
 
     return {
@@ -57,7 +57,7 @@ var radarModule = (function () {
                 TranslateY  : 30,
                 ExtraWidthX : 100,
                 ExtraWidthY : 100,
-                color       : dataModule.colorScale
+                color       : dataSample.colorScale
             };
 
             if (options !== 'undefined') {
@@ -76,7 +76,7 @@ var radarModule = (function () {
             }));
 
             if (d.length === 0) {
-                return dataModule.categories[0];
+                return dataSample.categories[0];
             }
             allAxis = (d[0].map(function (i, j) {
                 return i.axis;
@@ -126,7 +126,7 @@ var radarModule = (function () {
                     .style('stroke-opacity', '0.75')
                     .style('stroke-width', '.5px')
                     .attr('transform', 'translate(' + (cfg.w / 2 - levelFactor) + ', ' +
-                        (cfg.h / 2 - levelFactor) + ')');
+                    (cfg.h / 2 - levelFactor) + ')');
             }
 
             function calcX(d) {
@@ -151,9 +151,9 @@ var radarModule = (function () {
                         .style('font-family', 'sans-serif')
                         .style('font-size', '11px')
                         .attr('transform', 'translate(' + (cfg.w / 2 - levelFactor + cfg.ToRight) + ', ' +
-                            (cfg.h / 2 - levelFactor) + ')')
+                        (cfg.h / 2 - levelFactor) + ')')
                         .attr('fill', '#999999')
-                        .text(format(dataTransformModule.transformScaleReverse(((j + 1) * cfg.maxValue / cfg.levels))));
+                        .text(format(transform.transformScaleReverse(((j + 1) * cfg.maxValue / cfg.levels))));
                 }
 
                 series = 0;
@@ -280,7 +280,7 @@ var radarModule = (function () {
                             tooltip
                                 .attr('x', newX)
                                 .attr('y', newY)
-                                .text(dataTransformModule.transformScaleReverse(d.value))
+                                .text(transform.transformScaleReverse(d.value))
                                 .transition(200)
                                 .style('opacity', 1);
 
@@ -312,4 +312,4 @@ var radarModule = (function () {
             }
         }
     };
-}());
+});

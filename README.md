@@ -21,3 +21,10 @@ Browser-based tool, using [d3](http://d3js.org/) JavaScript library. Visualizati
 * Javascript Tips and Patterns (Module pattern)
  * http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript
  * http://www.xenoveritas.org/blog/xeno/the-correct-way-to-clone-javascript-arrays
+* RequireJS
+ * https://github.com/requirejs
+ * http://requirejs.org/docs/api.html
+ * http://tech.pro/blog/1639/using-rjs-to-optimize-your-requirejs-project
+ * http://www.sitepoint.com/understanding-requirejs-for-effective-javascript-module-loading/
+ * https://github.com/volojs/create-template
+ * http://www.ringabell.org/en/un-simple-guide-pour-debuter-avec-requirejs/
