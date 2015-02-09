@@ -5,7 +5,7 @@ Gap analysis visualization tool for the '[Continuous Delivery Maturity Model](ht
 Browser-based tool, using [d3](http://d3js.org/) JavaScript library. Visualizations rendered using JavaScript and SVG.
 
 ### Preview with Sample Data
-[![CD Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/master/images/screenshot_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/master/images/screenshot.png?raw=true)
+[![CD Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/screenshot_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/screenshot.png?raw=true)
 
 ### Optimize Project
 Module-based project uses RequireJS. After making any changes, optimize the project using [RequireJS Optimizer](http://requirejs.org/docs/optimization.html). Combines related scripts together into build layers and minifies them via UglifyJS (the default). Requires [Node.js](http://nodejs.org).
@@ -15,7 +15,7 @@ Module-based project uses RequireJS. After making any changes, optimize the proj
  node build/r.js -o build/build.js
  node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
  ```
- [![Optimizing Project](https://github.com/garystafford/cd-maturity-model/blob/master/images/optimizing_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/master/images/optimizing.png?raw=true)
+ [![Optimizing Project](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/optimizing_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/optimizing.png?raw=true)
 
 ### Helpful Links:
 * d3 and Radar Charts
