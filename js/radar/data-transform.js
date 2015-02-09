@@ -49,16 +49,20 @@ var dataTransformModule = (function () {
     };
 
     sortAppData = function (data) {
+        var index;
+    
         if (data.length === 0) {
             return data;
         }
         data = data.sort(function (a, b) {
             return a.toLowerCase().localeCompare(b.toLowerCase());
         });
-        if (data[0] === dataModule.averageTitle && data.length > 1) {
-            data.shift();
+        index = data.indexOf(dataModule.averageTitle);
+        if (index > -1 && data.length > 1) {
+            data.splice(index, 1);
             data.push(dataModule.averageTitle);
         }
+        
         return data;
     };
 
