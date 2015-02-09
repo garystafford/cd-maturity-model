@@ -15,8 +15,8 @@
  data, draw, enter, getAppNames, getCategoryAvgs, getElementById,
  getElementsByClassName, getLegendNames, getSelectedData, getSingleDataSet, h,
  height, htmlFor, id, idAverageCategories, indexOf, innerHTML, legendTitle, length,
- levels, maxValue, name, onclick, pageTitle, push, referenceLinkTitle_1,
- referenceLink_1, scale, select, selectAll, setAttribute, splice, style, text, type,
+ levels, maxValue, name, onclick, pageTitle, push, referenceLinkTitle,
+ referenceLink, scale, select, selectAll, setAttribute, splice, style, text, type,
  value, w, width
  */
 
@@ -295,8 +295,8 @@ define(["dataRadar", "d3", "./transform", "./radar"],
         createRefLink = function () {
             var newLink = document.createElement("a");
             newLink.className = "footerLinks";
-            newLink.setAttribute("href", dataRadar.referenceLink_1);
-            newLink.innerHTML = dataRadar.referenceLinkTitle_1;
+            newLink.setAttribute("href", dataRadar.referenceLink);
+            newLink.innerHTML = dataRadar.referenceLinkTitle;
             document.getElementById("footer")
                 .appendChild(newLink);
         };

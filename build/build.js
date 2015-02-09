@@ -8,6 +8,11 @@
  * node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
  */
 
+/*properties
+ app, baseUrl, d3, dataRadar, enforceDefine, findNestedDependencies, name,
+ out, paths
+ */
+
 ({
     baseUrl               : "./../js/radar",
     "paths"               : {
