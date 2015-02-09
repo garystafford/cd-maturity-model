@@ -8,10 +8,10 @@ Browser-based tool, using [d3](http://d3js.org/) JavaScript library. Visualizati
 [![CD Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/screenshot_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/screenshot.png?raw=true)
 
 ### Optimize Project
-Module-based project uses RequireJS. After making any changes, optimize the project using [RequireJS Optimizer](http://requirejs.org/docs/optimization.html). Combines related scripts together into build layers and minifies them via UglifyJS (the default). Requires [Node.js](http://nodejs.org).
+Module-based project uses RequireJS. After making any javascript or css changes, optimize the project using [RequireJS Optimizer](http://requirejs.org/docs/optimization.html). Optimizer combines related scripts together into build layers and minifies them via UglifyJS (the default). Requires [Node.js](http://nodejs.org).
  ```
  npm install -g requirejs
- cd ~/WebstormProjects/cd-maturity-model
+ cd cd-maturity-model
  node build/r.js -o build/build.js
  node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
  ```
