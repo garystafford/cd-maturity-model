@@ -43,13 +43,13 @@ maturityData: [
 ```
 
 ### Technology
-Browser-based tool, using [d3](http://d3js.org/) JavaScript library. Visualizations rendered using JavaScript and SVG.
+Browser-based tool, using [d3](http://d3js.org/) JavaScript library. Visualizations rendered using JavaScript and [SVG](http://en.wikipedia.org/wiki/Scalable_Vector_Graphics).
 
 ### Preview with Sample Data
 [![CD Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/screenshot_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/screenshot.png?raw=true)
 
-### Optimize Project
-Module-based project uses RequireJS. After making any javascript or css changes, optimize the project using [RequireJS Optimizer](http://requirejs.org/docs/optimization.html). Optimizer combines related scripts together into build layers and minifies them via UglifyJS (the default). Requires [Node.js](http://nodejs.org).
+### RequireJS Optimization
+Module-based project uses [RequireJS](http://requirejs.org/). After making any javascript or css changes, optimize the project using [RequireJS Optimizer](http://requirejs.org/docs/optimization.html). Optimizer combines related scripts together into build layers and minifies them via [UglifyJS](https://github.com/mishoo/UglifyJS) (the default). Requires [Node.js](http://nodejs.org).
  ```
  npm install -g requirejs
  cd cd-maturity-model
