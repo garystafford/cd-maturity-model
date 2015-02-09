@@ -1,4 +1,4 @@
-### Continuous Delivery Maturity Model Gap Analysis Visualization Tool
+### Continuous Delivery Maturity Model - Gap Analysis Visualization Tool
 Gap analysis visualization tool for the '[Continuous Delivery Maturity Model](https://secure.surveymonkey.com/_resources/28183/23008183/bf361750-7418-458f-85a6-6c07333e4986.png)'. Based on model from the book, '**Continuous Delivery:** *Reliable Software Releases through Build, Test, and Deployment Automation*', by Jez Humble and David Farley, available on [Amazon](http://www.amazon.com/dp/0321601912).  
 
 Allows the comparison of the six categories of the CD Maturity Model across multiple applications/platforms/teams. Currently, data is stored in the `data_radar.js` file as an array of JavaScript object literals. It would be very easy to move the datasource to a static JSON file, or better yet a database, like MongoDB.

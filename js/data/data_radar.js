@@ -39,19 +39,19 @@ define(function () {
         definition: "Unranked"
     }, {
         score     : -1,
-        definition: "Optimizing"
+        definition: "Regressive"
     }, {
         score     : 0,
-        definition: "Quantitatively Managed"
+        definition: "Repeatable"
     }, {
         score     : 1,
         definition: "Consistent"
     }, {
         score     : 2,
-        definition: "Repeatable"
+        definition: "Quantitatively Managed"
     }, {
         score     : 3,
-        definition: "Regressive"
+        definition: "Optimizing"
     }];
 
     EMPTY_DATASET = [
