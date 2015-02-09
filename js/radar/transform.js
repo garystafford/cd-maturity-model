@@ -12,13 +12,13 @@
  getAllAppsMaturityRating, getAppNames, getCategoryAvgs, getLegendNames,
  getSelectedData, getSingleDataSet, getTransformedSortedData,
  idAverageCategories, indexOf, length, localeCompare, maturityData, parse,
- push, round, shift, sort, stringify, toLowerCase, transformScale,
+ push, round, sort, splice, stringify, toLowerCase, transformScale,
  transformScaleReverse, value
  */
 
 /*global JSON, Math, define */
 /*jslint plusplus: true */
-define(["./../data/data"], function (dataSample) {
+define(["dataRadar"], function (dataRadar) {
     "use strict";
 
     var maturityData,
@@ -36,7 +36,7 @@ define(["./../data/data"], function (dataSample) {
         getSingleDataSet;
 
 
-    maturityData = JSON.parse(JSON.stringify(dataSample.maturityData));
+    maturityData = JSON.parse(JSON.stringify(dataRadar.maturityData));
 
     getAppNames = function () {
         var applications = [],
@@ -69,16 +69,22 @@ define(["./../data/data"], function (dataSample) {
     };
 
     sortAppData = function (data) {
+        var index;
+
         if (data.length === 0) {
             return data;
         }
+        
         data = data.sort(function (a, b) {
             return a.toLowerCase().localeCompare(b.toLowerCase());
         });
-        if (data[0] === dataSample.averageTitle && data.length > 1) {
-            data.shift();
-            data.push(dataSample.averageTitle);
+
+        index = data.indexOf(dataRadar.averageTitle);
+        if (index > -1 && data.length > 1) {
+            data.splice(index, 1);
+            data.push(dataRadar.averageTitle);
         }
+
         return data;
     };
 
@@ -106,8 +112,8 @@ define(["./../data/data"], function (dataSample) {
             return applications;
         }
         for (i = 0; i < currentSelections.length; i++) {
-            if (currentSelections[i] === dataSample.idAverageCategories) { // Average selected
-                applications.push(dataSample.averageTitle);
+            if (currentSelections[i] === dataRadar.idAverageCategories) { // Average selected
+                applications.push(dataRadar.averageTitle);
             } else {
                 applications.push(dataTransformed[currentSelections[i]][0].app);
             }
@@ -137,11 +143,11 @@ define(["./../data/data"], function (dataSample) {
             i;
 
         if (currentSelections.length === 0) { // No data available
-            return dataSample.emptyDataSet;
+            return dataRadar.emptyDataSet;
         }
         currentSelections = sortNumbers(currentSelections);
         for (i = 0; i < currentSelections.length; i++) {
-            if (currentSelections[i] === dataSample.idAverageCategories) {
+            if (currentSelections[i] === dataRadar.idAverageCategories) {
                 selectedData.push(getCategoryAvgs()[0]);
             } else {
                 selectedData.push(dataTransformed[currentSelections[i]]);
@@ -185,8 +191,8 @@ define(["./../data/data"], function (dataSample) {
             for (i = 0; i < maturityData.length; i++) {
                 x = x + transformScale(maturityData[i][j].value);
             }
-            appAverage.app = dataSample.averageTitle;
-            appAverage.axis = dataSample.categories[j];
+            appAverage.app = dataRadar.averageTitle;
+            appAverage.axis = dataRadar.categories[j];
             appAverage.value = Math.round(x / maturityData.length);
             dataAverage.push(appAverage);
             x = 0;

@@ -11,18 +11,19 @@
 
 /*properties
  ExtraWidthX, addEventListener, app, append, appendChild, attr, checked,
- className, colorScale, createElement, createTextNode, currentTarget, cursor,
+ category10, className, createElement, createTextNode, currentTarget, cursor,
  data, draw, enter, getAppNames, getCategoryAvgs, getElementById,
  getElementsByClassName, getLegendNames, getSelectedData, getSingleDataSet, h,
- htmlFor, id, idAverageCategories, indexOf, innerHTML, legendTitle, length,
+ height, htmlFor, id, idAverageCategories, indexOf, innerHTML, legendTitle, length,
  levels, maxValue, name, onclick, pageTitle, push, referenceLinkTitle_1,
- referenceLink_1, select, selectAll, setAttribute, splice, style, text, type,
- value, w
+ referenceLink_1, scale, select, selectAll, setAttribute, splice, style, text, type,
+ value, w, width
  */
-/*global d3, dataSample, transform, document, radar, define */
+
+/*global d3, dataRadar, transform, document, radar, define */
 /*jslint browser: true, plusplus: true, unparam: true */
-define(["./../data/data", "./../d3/d3.min", "./transform", "./radar"],
-    function (dataSample, d3, transform, radar) {
+define(["dataRadar", "d3", "./transform", "./radar"],
+    function (dataRadar, d3, transform, radar) {
         "use strict";
         var colorScale,
             checkboxes,
@@ -41,7 +42,7 @@ define(["./../data/data", "./../d3/d3.min", "./transform", "./radar"],
             createRefLink,
             initializePage;
 
-        colorScale = dataSample.colorScale;
+        colorScale = d3.scale.category10();
 
         //Tracks checkboxes
         checkboxes = [];
@@ -64,7 +65,7 @@ define(["./../data/data", "./../d3/d3.min", "./transform", "./radar"],
 
             legendOptions = transform.getLegendNames(checkboxes);
 
-            if (typeof legendOptions === "undefined") {
+            if (legendOptions === undefined) {
                 return 0;
             }
 
@@ -82,7 +83,7 @@ define(["./../data/data", "./../d3/d3.min", "./transform", "./radar"],
                 .attr("y", 10)
                 .attr("font-size", "12px")
                 .attr("fill", "#404040")
-                .text(dataSample.legendTitle);
+                .text(dataRadar.legendTitle);
 
             //Initiate Legend
             legend = svg.append("g")
@@ -120,10 +121,6 @@ define(["./../data/data", "./../d3/d3.min", "./transform", "./radar"],
                 .text(function (d) {
                     return d;
                 });
-            //.attr("onmouseover", "evt.target.setAttribute('opacity', '0.5');")
-            //.attr("onmouseout", "evt.target.setAttribute('opacity','1');")
-            //.attr("onclick", "radar.draw('#chart', transform.getSingleDataSet(this.textContent), this.config);drawLegend();")
-            //.style("cursor", "pointer");
         };
 
         createCheckbox = function (app, i) {
@@ -162,7 +159,7 @@ define(["./../data/data", "./../d3/d3.min", "./transform", "./radar"],
 
             newDiv = document.createElement("div");
             tempDataSet = transform.getSingleDataSet(app);
-            if (typeof tempDataSet === "undefined") { // No data available
+            if (tempDataSet === undefined) { // No data available
                 return newDiv;
             }
             newDiv.appendChild(createCheckbox(app, i));
@@ -179,12 +176,12 @@ define(["./../data/data", "./../d3/d3.min", "./transform", "./radar"],
 
             newDiv = document.createElement("div");
             tempDataSet = transform.getCategoryAvgs();
-            if (typeof tempDataSet[0] === "undefined") { // No data available
+            if (tempDataSet[0] === undefined) { // No data available
                 return newDiv;
             }
             app = tempDataSet[0][0].app;
-            newDiv.appendChild(createCheckbox(app, dataSample.idAverageCategories));
-            newDiv.appendChild(createLabel(app, dataSample.idAverageCategories));
+            newDiv.appendChild(createCheckbox(app, dataRadar.idAverageCategories));
+            newDiv.appendChild(createLabel(app, dataRadar.idAverageCategories));
             newDiv.style.cursor = "pointer";
             newDiv.className = "appDiv";
             return newDiv;
@@ -240,7 +237,7 @@ define(["./../data/data", "./../d3/d3.min", "./transform", "./radar"],
 
         createTitleDiv = function () {
             var newDiv = document.createElement("div");
-            newDiv.innerHTML = dataSample.legendTitle;
+            newDiv.innerHTML = dataRadar.legendTitle;
             newDiv.className = "titleDiv";
             return newDiv;
         };
@@ -286,6 +283,8 @@ define(["./../data/data", "./../d3/d3.min", "./transform", "./radar"],
             newImg.setAttribute("src",
                 "https://secure.surveymonkey.com/_resources/28183/23008183/bf361750-7418-458f-85a6-6c07333e4986.png");
             newImg.style.cursor = "pointer";
+            newImg.style.width = 921;
+            newImg.style.height = 466;
             newImg.addEventListener("click", function () {
                 document.getElementById("model").className = "hideModel";
             });
@@ -296,18 +295,18 @@ define(["./../data/data", "./../d3/d3.min", "./transform", "./radar"],
         createRefLink = function () {
             var newLink = document.createElement("a");
             newLink.className = "footerLinks";
-            newLink.setAttribute("href", dataSample.referenceLink_1);
-            newLink.innerHTML = dataSample.referenceLinkTitle_1;
+            newLink.setAttribute("href", dataRadar.referenceLink_1);
+            newLink.innerHTML = dataRadar.referenceLinkTitle_1;
             document.getElementById("footer")
                 .appendChild(newLink);
         };
 
         initializePage = function () {
-            document.getElementById("title").innerHTML = dataSample.pageTitle;
+            document.getElementById("title").innerHTML = dataRadar.pageTitle;
             radar.draw("#chart", transform.getCategoryAvgs(), config);
             attachDivs();
             document.getElementById("app100").checked = true;
-            checkboxes.push(dataSample.idAverageCategories);
+            checkboxes.push(dataRadar.idAverageCategories);
             drawLegend();
             createModelPopup();
             createModelImg();

@@ -10,7 +10,7 @@
  */
 
 /*global d3, define */
-define(["./../d3/d3.min"], function (d3) {
+define(function () {
     "use strict";
     var categories,
         maturityLevels;
@@ -50,7 +50,6 @@ define(["./../d3/d3.min"], function (d3) {
         legendTitle         : "Banking Systems",
         averageTitle        : "Average Maturity - All Systems",
         idAverageCategories : 100,
-        colorScale          : d3.scale.category10(),
         referenceLink_1     : "http://en.wikipedia.org/wiki/Continuous_delivery",
         referenceLinkTitle_1: "Sample Link to Analysis Details",
 

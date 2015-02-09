@@ -9,9 +9,14 @@
  */
 
 ({
-    baseUrl               : "../js/radar",
-    name                  : "./main",
-    out                   : "../dist/main-built.js",
+    baseUrl               : "./../js/radar",
+    "paths"               : {
+        "app"    : "./../../app",
+        d3       : "./../d3/d3.min",
+        dataRadar: "./../data/data_radar"
+    },
+    name                  : "app",
+    out                   : "./../dist/main-built.js",
     enforceDefine         : true,
     findNestedDependencies: true
 })

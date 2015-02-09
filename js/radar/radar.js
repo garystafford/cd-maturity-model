@@ -11,16 +11,16 @@
 
 /*properties
  ExtraWidthX, ExtraWidthY, PI, ToRight, TranslateX, TranslateY, append, attr,
- axis, categories, color, colorScale, cos, data, draw, enter, factor,
+ axis, categories, category10, color, colorScale, cos, data, draw, enter, factor,
  factorLegend, forEach, format, h, hasOwnProperty, length, levels, map, max,
- maxValue, min, on, opacityArea, push, radians, radius, remove, select,
+ maxValue, min, on, opacityArea, push, radians, radius, remove, scale, select,
  selectAll, sin, style, text, transformScaleReverse, transition, value, w
  */
 
-/*global Math, d3, dataSample, transform, parseFloat, define */
+/*global Math, d3, dataRadar, transform, parseFloat, define */
 /*jslint plusplus: true, unparam: true */
-define(["./../data/data", "./../d3/d3.min", "./transform"],
-    function (dataSample, d3, transform) {
+define(["dataRadar", "d3", "./transform"],
+    function (dataRadar, d3, transform) {
         "use strict";
 
         return {
@@ -58,7 +58,7 @@ define(["./../data/data", "./../d3/d3.min", "./transform"],
                     TranslateY  : 30,
                     ExtraWidthX : 100,
                     ExtraWidthY : 100,
-                    color       : dataSample.colorScale
+                    color       : d3.scale.category10()
                 };
 
                 if (options !== "undefined") {
@@ -77,7 +77,7 @@ define(["./../data/data", "./../d3/d3.min", "./transform"],
                 }));
 
                 if (d.length === 0) {
-                    return dataSample.categories[0];
+                    return dataRadar.categories[0];
                 }
                 allAxis = (d[0].map(function (i, j) {
                     return i.axis;
