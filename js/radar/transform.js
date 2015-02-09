@@ -74,7 +74,7 @@ define(["dataRadar"], function (dataRadar) {
         if (data.length === 0) {
             return data;
         }
-        
+
         data = data.sort(function (a, b) {
             return a.toLowerCase().localeCompare(b.toLowerCase());
         });

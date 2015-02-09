@@ -13,10 +13,9 @@ Module-based project uses RequireJS. After making any changes, optimize the proj
  npm install -g requirejs
  cd ~/WebstormProjects/cd-maturity-model
  node build/r.js -o build/build.js
- # Alternately, combine but don't minify
- #node build/r.js -o build/build.js optimize=none
  node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
  ```
+ [![Optimizing Project](https://github.com/garystafford/cd-maturity-model/blob/master/images/optimizing_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/master/images/optimizing.png?raw=true)
 
 ### Helpful Links:
 * d3 and Radar Charts
