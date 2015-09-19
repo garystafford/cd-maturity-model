@@ -9,7 +9,7 @@ Browser-based tool, using [d3](http://d3js.org/) JavaScript library. Visualizati
 ### Data
 Currently, data is stored in the `data_radar.js` file as an array of JavaScript object literals. It would be very easy to move the datasource to a static JSON file, or better yet a database, like MongoDB.
 
-```json
+```javascript
 CATEGORIES = [
     "Build Management and Continuous Integration",
     "Environments and Deployment",
