@@ -9,7 +9,7 @@ Browser-based tool, using [d3](http://d3js.org/) JavaScript library. Visualizati
 ### Data
 Currently, data is stored in the `data_radar.js` file as an array of JavaScript object literals. It would be very easy to move the datasource to a static JSON file, or better yet a database, like MongoDB.
 
-```
+```json
 CATEGORIES = [
     "Build Management and Continuous Integration",
     "Environments and Deployment",
@@ -57,7 +57,7 @@ maturityData: [
 
 ### RequireJS Optimization
 Module-based project uses [RequireJS](http://requirejs.org/). After making any javascript or css changes, optimize the project using [RequireJS Optimizer](http://requirejs.org/docs/optimization.html). Optimizer combines related scripts together into build layers and minifies them via [UglifyJS](https://github.com/mishoo/UglifyJS) (the default). Requires [Node.js](http://nodejs.org).
- ```
+ ```bash
  npm install -g requirejs
  cd cd-maturity-model
  cp -f js/require/require.min.js dist/
