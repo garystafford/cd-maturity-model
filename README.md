@@ -72,6 +72,10 @@ To host the project, after optimizing, you only need the following items:
 * `favicon.ico` file
 * `dist` directory
 
+### Hosting on Apache
+docker build -t my-apache2 .
+docker run -dit --name cd-maturity-model -p 8082:80 my-apache2
+
 ### Helpful Links
 * d3 and Radar Charts
  * http://www.visualcinnamon.com/2013/09/making-d3-radar-chart-look-bit-better.html
