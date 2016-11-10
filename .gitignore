@@ -48,3 +48,4 @@ crashlytics.properties
 crashlytics-build.properties
 
 js/data/data_actual.js
+**.DS_Store
