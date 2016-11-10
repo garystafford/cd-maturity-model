@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+- node
+script:
+- npm install -g requirejs
+- cd cd-maturity-model
+- cp -f js/require/require.min.js dist/
+- node build/r.js -o build/build.js
+- node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
