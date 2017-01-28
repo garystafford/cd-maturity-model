@@ -1,4 +1,4 @@
-# Continuous Delivery Maturity Model - Gap Analysis Visualization Tool
+# CD Maturity Model - Gap Analysis Visualization Tool
 
 Gap analysis visualization tool for the '[Continuous Delivery Maturity Model](https://secure.surveymonkey.com/_resources/28183/23008183/bf361750-7418-458f-85a6-6c07333e4986.png)'. Based on model from the book, '**Continuous Delivery:** _Reliable Software Releases through Build, Test, and Deployment Automation_', by Jez Humble and David Farley, available on [Amazon](http://www.amazon.com/dp/0321601912). Allows the comparison of the six categories of the CD Maturity Model across multiple applications platforms.
 
@@ -114,7 +114,9 @@ cp -f js/require/require.min.js dist/ \
 
 ## Infrastructure as Code Maturity Model
 
-The Maturity Model Gap Analysis Tool can be applied to any discipline. Recently, with the support of some peers, I've developed the [Infrastructure as Code (IaC) Maturity Model](https://programmaticponderings.com/2016/11/25/infrastructure-as-code-maturity-model/). This project now includes sample data, based on the IaC Maturity Model.
+The Maturity Model Gap Analysis Tool is applicable to many discipline. Recently, with the support and feedback of some peers, I've developed the [Infrastructure as Code (IaC) Maturity Model](https://programmaticponderings.com/2016/11/25/infrastructure-as-code-maturity-model/). [![IaC Maturity Model](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_Maturity_Model_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_Maturity_Model.png?raw=true)
+
+This project now includes sample data (`js/data/iac_radar.js`), based on the IaC Maturity Model.
 
 [![IaC Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_example_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_example.png?raw=true)
 
