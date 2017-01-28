@@ -2,7 +2,7 @@
 
 Gap analysis visualization tool for the '[Continuous Delivery Maturity Model](https://secure.surveymonkey.com/_resources/28183/23008183/bf361750-7418-458f-85a6-6c07333e4986.png)'. Based on model from the book, '**Continuous Delivery:** _Reliable Software Releases through Build, Test, and Deployment Automation_', by Jez Humble and David Farley, available on [Amazon](http://www.amazon.com/dp/0321601912). Allows the comparison of the six categories of the CD Maturity Model across multiple applications platforms.
 
-[![CD Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/screenshot_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/screenshot.png?raw=true)
+[![CD Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/CD_example_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/CD_example.png?raw=true)
 
 ## Technology
 
@@ -58,16 +58,24 @@ maturityData: [
 ];
 ```
 
+## Quick Start
+
+To install the project locally:
+
+```bash
+git clone https://github.com/garystafford/cd-maturity-model.git \
+&& cd cd-maturity-model
+npm install -g requirejs
+```
+
 ## RequireJS Optimization
 
 Module-based project uses [RequireJS](http://requirejs.org/). After making any javascript or css changes, optimize the project using [RequireJS Optimizer](http://requirejs.org/docs/optimization.html). Optimizer combines related scripts together into build layers and minifies them via [UglifyJS](https://github.com/mishoo/UglifyJS) (the default). Requires [Node.js](http://nodejs.org).
 
 ```bash
-npm install -g requirejs
-cd cd-maturity-model
-cp -f js/require/require.min.js dist/
-node build/r.js -o build/build.js
-node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
+cp -f js/require/require.min.js dist/ \
+&& node build/r.js -o build/build.js \
+&& node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
 ```
 
 [![Optimizing Project](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/optimizing_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/optimizing.png?raw=true)
@@ -82,7 +90,7 @@ To host the project, after optimizing, you only need the following items:
 
 ## Hosting Project on Apache with Docker
 
-Run commands above first, then:
+The project includes a `Dockerfile` for local development and hosting of the app, on Apache web server, in a Docker container. After running the 'RequireJS Optimization' commands above, then:
 
 ```bash
 docker build -t apache2 .
@@ -90,6 +98,25 @@ docker run -dit --name cd-maturity-model -p 8082:80 apache2
 ```
 
 Point your browser to `http://localhost:8082/`
+
+## Rapid Development
+
+To quickly rebuild and re-containerize the app:
+
+```bash
+cp -f js/require/require.min.js dist/ \
+  && node build/r.js -o build/build.js \
+  && node build/r.js -o cssIn=css/radar.css out=dist/main-built.css \
+  && docker rm -f cd-maturity-model \
+  && docker build -t apache2 . \
+  && docker run -d --name cd-maturity-model -p 8082:80 apache2
+```
+
+## Infrastructure as Code Maturity Model
+
+The Maturity Model Gap Analysis Tool can be applied to any discipline. Recently, with the support of some peers, I've developed the [Infrastructure as Code (IaC) Maturity Model](https://programmaticponderings.com/2016/11/25/infrastructure-as-code-maturity-model/). This project now includes sample data, based on the IaC Maturity Model.
+
+[![IaC Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_example_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_example.png?raw=true)
 
 ## Helpful Links
 

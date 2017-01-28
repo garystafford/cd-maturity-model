@@ -10,8 +10,9 @@
 /*global requirejs */
 requirejs.config({
     baseUrl: "js/radar",
-    paths  : {
-        d3       : "./../d3/d3.min",
+    paths: {
+        d3: "./../d3/d3.min",
+        // dataRadar: "./../data/iac_radar"
         dataRadar: "./../data/data_radar"
     }
 });

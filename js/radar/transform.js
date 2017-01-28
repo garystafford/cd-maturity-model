@@ -18,7 +18,7 @@
 
 /*global JSON, Math, define */
 /*jslint plusplus: true */
-define(["dataRadar"], function (dataRadar) {
+define(["dataRadar"], function(dataRadar) {
     "use strict";
 
     var maturityData,
@@ -38,7 +38,7 @@ define(["dataRadar"], function (dataRadar) {
 
     maturityData = JSON.parse(JSON.stringify(dataRadar.maturityData));
 
-    getAppNames = function () {
+    getAppNames = function() {
         var applications = [],
             i;
 
@@ -48,7 +48,7 @@ define(["dataRadar"], function (dataRadar) {
         return sortAppData(applications);
     };
 
-    sortMaturityData = function (data) {
+    sortMaturityData = function(data) {
         var sortedMaturityData = [],
             appNames,
             i,
@@ -68,14 +68,14 @@ define(["dataRadar"], function (dataRadar) {
         return sortedMaturityData;
     };
 
-    sortAppData = function (data) {
+    sortAppData = function(data) {
         var index;
 
         if (data.length === 0) {
             return data;
         }
 
-        data = data.sort(function (a, b) {
+        data = data.sort(function(a, b) {
             return a.toLowerCase().localeCompare(b.toLowerCase());
         });
 
@@ -88,21 +88,21 @@ define(["dataRadar"], function (dataRadar) {
         return data;
     };
 
-    sortNumbers = function (data) {
-        return data.sort(function (a, b) {
+    sortNumbers = function(data) {
+        return data.sort(function(a, b) {
             return a - b;
         });
     };
 
-    transformScale = function (value) {
+    transformScale = function(value) {
         return ((value * 20) + 40);
     };
 
-    transformScaleReverse = function (value) {
+    transformScaleReverse = function(value) {
         return ((value - 40) / 20);
     };
 
-    getLegendNames = function (currentSelections) {
+    getLegendNames = function(currentSelections) {
         // Already transformed and sorted
         var dataTransformed = getTransformedSortedData(),
             applications = [],
@@ -121,7 +121,7 @@ define(["dataRadar"], function (dataRadar) {
         return sortAppData(applications);
     };
 
-    getTransformedSortedData = function () {
+    getTransformedSortedData = function() {
         var dataTransformed = JSON.parse(JSON.stringify(maturityData)),
             x = 0,
             i,
@@ -136,7 +136,7 @@ define(["dataRadar"], function (dataRadar) {
         return sortMaturityData(dataTransformed);
     };
 
-    getSelectedData = function (currentSelections) {
+    getSelectedData = function(currentSelections) {
         // Already transformed and sorted
         var dataTransformed = getTransformedSortedData(),
             selectedData = [],
@@ -158,7 +158,7 @@ define(["dataRadar"], function (dataRadar) {
 
     // Create array of application objects containing average score,
     // as a percentage, across all categories (aka axis)
-    getAllAppsMaturityRating = function () {
+    getAllAppsMaturityRating = function() {
         var dataAverage = [],
             appAverage = {},
             x = 0,
@@ -180,7 +180,7 @@ define(["dataRadar"], function (dataRadar) {
 
     // Create array of categories (aka axis) objects containing average score,
     // as a percentage, across all applications
-    getCategoryAvgs = function () {
+    getCategoryAvgs = function() {
         var dataAverage = [],
             appAverage = {},
             x = 0,
@@ -201,7 +201,7 @@ define(["dataRadar"], function (dataRadar) {
         return [dataAverage];
     };
 
-    getSingleDataSet = function (appName) {
+    getSingleDataSet = function(appName) {
         var i,
             singleDataSet;
 
@@ -211,21 +211,21 @@ define(["dataRadar"], function (dataRadar) {
     };
 
     return {
-        transformScale          : transformScale,
+        transformScale: transformScale,
         getTransformedSortedData: getTransformedSortedData,
         getAllAppsMaturityRating: getAllAppsMaturityRating,
-        getCategoryAvgs         : getCategoryAvgs,
-        getAppNames             : getAppNames,
-        transformScaleReverse   : function (value) {
+        getCategoryAvgs: getCategoryAvgs,
+        getAppNames: getAppNames,
+        transformScaleReverse: function(value) {
             return transformScaleReverse(value);
         },
-        getLegendNames          : function (currentSelections) {
+        getLegendNames: function(currentSelections) {
             return getLegendNames(currentSelections);
         },
-        getSelectedData         : function (currentSelections) {
+        getSelectedData: function(currentSelections) {
             return getSelectedData(currentSelections);
         },
-        getSingleDataSet        : function (appName) {
+        getSingleDataSet: function(appName) {
             return getSingleDataSet(appName);
         }
     };

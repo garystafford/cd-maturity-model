@@ -18,6 +18,7 @@
     "paths"               : {
         "app"    : "./../../app",
         d3       : "./../d3/d3.min",
+        // dataRadar: "./../data/iac_radar"
         dataRadar: "./../data/data_radar"
     },
     name                  : "app",

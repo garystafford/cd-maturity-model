@@ -23,7 +23,7 @@
 /*global d3, dataRadar, transform, document, radar, define */
 /*jslint browser: true, plusplus: true, unparam: true */
 define(["dataRadar", "d3", "./transform", "./radar"],
-    function (dataRadar, d3, transform, radar) {
+    function(dataRadar, d3, transform, radar) {
         "use strict";
         var colorScale,
             checkboxes,
@@ -49,15 +49,15 @@ define(["dataRadar", "d3", "./transform", "./radar"],
 
         //Options for the Radar chart, other than default
         config = {
-            w          : 450,
-            h          : 450,
-            maxValue   : 100,
-            levels     : 5,
+            w: 450,
+            h: 450,
+            maxValue: 100,
+            levels: 5,
             ExtraWidthX: 550
         };
 
         //Initiate legend
-        drawLegend = function () {
+        drawLegend = function() {
             var legendOptions,
                 svg,
                 text,
@@ -98,12 +98,12 @@ define(["dataRadar", "d3", "./transform", "./radar"],
                 .enter()
                 .append("rect")
                 .attr("x", config.w + 175 - 65)
-                .attr("y", function (d, i) {
+                .attr("y", function(d, i) {
                     return i * 20;
                 })
                 .attr("width", 10)
                 .attr("height", 10)
-                .style("fill", function (d, i) {
+                .style("fill", function(d, i) {
                     return colorScale(i);
                 });
 
@@ -113,17 +113,17 @@ define(["dataRadar", "d3", "./transform", "./radar"],
                 .enter()
                 .append("text")
                 .attr("x", config.w + 175 - 52)
-                .attr("y", function (d, i) {
+                .attr("y", function(d, i) {
                     return i * 20 + 9;
                 })
                 .attr("font-size", "11px")
                 .attr("fill", "#737373")
-                .text(function (d) {
+                .text(function(d) {
                     return d;
                 });
         };
 
-        createCheckbox = function (app, i) {
+        createCheckbox = function(app, i) {
             var newCheckbox = document.createElement("input");
             newCheckbox.type = "checkbox";
             newCheckbox.name = "app";
@@ -131,7 +131,7 @@ define(["dataRadar", "d3", "./transform", "./radar"],
             newCheckbox.id = "app" + i;
             newCheckbox.data = i;
             newCheckbox.className = "appCheckbox";
-            newCheckbox.onclick = function (event) {
+            newCheckbox.onclick = function(event) {
                 if (event.currentTarget.checked) {
                     checkboxes.push(event.currentTarget.data);
                 } else {
@@ -146,14 +146,14 @@ define(["dataRadar", "d3", "./transform", "./radar"],
             return newCheckbox;
         };
 
-        createLabel = function (app, i) {
+        createLabel = function(app, i) {
             var newLabel = document.createElement("label");
             newLabel.htmlFor = "app" + i;
             newLabel.appendChild(document.createTextNode(app));
             return newLabel;
         };
 
-        createAppDiv = function (app, i) {
+        createAppDiv = function(app, i) {
             var newDiv,
                 tempDataSet;
 
@@ -169,7 +169,7 @@ define(["dataRadar", "d3", "./transform", "./radar"],
             return newDiv;
         };
 
-        createCatAvgsDiv = function () {
+        createCatAvgsDiv = function() {
             var newDiv,
                 tempDataSet,
                 app;
@@ -208,12 +208,12 @@ define(["dataRadar", "d3", "./transform", "./radar"],
             }
         }
 
-        createAllAppsDiv = function () {
+        createAllAppsDiv = function() {
             var newDiv = document.createElement("div");
             newDiv.innerHTML = "Check All";
             newDiv.style.cursor = "pointer";
             newDiv.className = "specialDiv";
-            newDiv.addEventListener("click", function () {
+            newDiv.addEventListener("click", function() {
                 checkboxes = [];
                 checkAll();
                 radar.draw("#chart", transform.getSelectedData(checkboxes), config);
@@ -221,12 +221,12 @@ define(["dataRadar", "d3", "./transform", "./radar"],
             });
             return newDiv;
         };
-        createNoAppsDiv = function () {
+        createNoAppsDiv = function() {
             var newDiv = document.createElement("div");
             newDiv.innerHTML = "Check None";
             newDiv.style.cursor = "pointer";
             newDiv.className = "specialDiv";
-            newDiv.addEventListener("click", function () {
+            newDiv.addEventListener("click", function() {
                 checkboxes = [];
                 checkNone();
                 radar.draw("#chart", transform.getSelectedData(checkboxes), config);
@@ -235,14 +235,14 @@ define(["dataRadar", "d3", "./transform", "./radar"],
             return newDiv;
         };
 
-        createTitleDiv = function () {
+        createTitleDiv = function() {
             var newDiv = document.createElement("div");
             newDiv.innerHTML = dataRadar.legendTitle;
             newDiv.className = "titleDiv";
             return newDiv;
         };
 
-        attachDivs = function () {
+        attachDivs = function() {
             var appNames,
                 arrayLength,
                 i;
@@ -263,11 +263,11 @@ define(["dataRadar", "d3", "./transform", "./radar"],
                 .appendChild(createNoAppsDiv());
         };
 
-        createModelPopup = function () {
+        createModelPopup = function() {
             var newPara = document.createElement("p");
-            newPara.innerHTML = "Continuous Delivery Maturity Model";
+            newPara.innerHTML = "IaC Maturity Model";
             newPara.className = "footerLinks";
-            newPara.addEventListener("click", function () {
+            newPara.addEventListener("click", function() {
                 if (document.getElementById("model").className === "showModel") {
                     document.getElementById("model").className = "hideModel";
                 } else {
@@ -278,21 +278,21 @@ define(["dataRadar", "d3", "./transform", "./radar"],
                 .appendChild(newPara);
         };
 
-        createModelImg = function () {
+        createModelImg = function() {
             var newImg = document.createElement("img");
             newImg.setAttribute("src",
                 "https://secure.surveymonkey.com/_resources/28183/23008183/bf361750-7418-458f-85a6-6c07333e4986.png");
             newImg.style.cursor = "pointer";
             newImg.style.width = 921;
             newImg.style.height = 466;
-            newImg.addEventListener("click", function () {
+            newImg.addEventListener("click", function() {
                 document.getElementById("model").className = "hideModel";
             });
             document.getElementById("model").className = "hideModel";
             document.getElementById("model").appendChild(newImg);
         };
 
-        createRefLink = function () {
+        createRefLink = function() {
             var newLink = document.createElement("a");
             newLink.className = "footerLinks";
             newLink.setAttribute("href", dataRadar.referenceLink);
@@ -301,7 +301,7 @@ define(["dataRadar", "d3", "./transform", "./radar"],
                 .appendChild(newLink);
         };
 
-        initializePage = function () {
+        initializePage = function() {
             document.getElementById("title").innerHTML = dataRadar.pageTitle;
             radar.draw("#chart", transform.getCategoryAvgs(), config);
             attachDivs();

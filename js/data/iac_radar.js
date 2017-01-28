@@ -1,19 +1,22 @@
 /**
- * Infrastructure as Code Maturity Gap Analysis Sample Data
+ * Infrastructure as Code Maturity Gap Analysis
+ * Financial Institution Sample Data
  * Created by Gary A. Stafford on 1/28/17
  * https://github.com/garystafford/cd-maturity-model
  */
 
 /*properties
- app, applications, averageTitle, axis, categories, definition, emptyDataSet,
- idAverageCategories, legendTitle, maturityData, maturityLevels, pageTitle,
- referenceLink, referenceLinkTitle, score, value
+ app, applications, averageTitle, axis, categoryCount, categories, definition,
+ emptyDataSet, idAverageCategories, legendTitle, maturityData, maturityLevels,
+ pageTitle, referenceLink, referenceLinkTitle, score, value
  */
 
 /*global define */
-define(function () {
+define(function() {
     "use strict";
-    var CATEGORIES,
+
+    var CATEGORY_COUNT,
+        CATEGORIES,
         MATURITY_LEVELS,
         EMPTY_DATASET,
         ID_AVERAGE_CATEGORIES,
@@ -26,6 +29,8 @@ define(function () {
         maturityData;
 
     /* CONSTANTS */
+    CATEGORY_COUNT = 5; // currently unused
+
     CATEGORIES = [
         "Development",
         "Continuous Integration",
@@ -35,183 +40,208 @@ define(function () {
     ];
 
     MATURITY_LEVELS = [{
-        score     : -2,
+        score: -2,
         definition: "Unranked"
     }, {
-        score     : -1,
+        score: -1,
         definition: "Regressive"
     }, {
-        score     : 0,
+        score: 0,
         definition: "Repeatable"
     }, {
-        score     : 1,
+        score: 1,
         definition: "Consistent"
     }, {
-        score     : 2,
+        score: 2,
         definition: "Managed"
     }, {
-        score     : 3,
+        score: 3,
         definition: "Optimizing"
     }];
 
     EMPTY_DATASET = [
         [{
-            "app" : "",
+            "app": "",
             "axis": CATEGORIES[0],
-            value : -2
+            value: -2
         }, {
-            "app" : "",
+            "app": "",
             "axis": CATEGORIES[1],
-            value : -2
+            value: -2
         }, {
-            "app" : "",
+            "app": "",
             "axis": CATEGORIES[2],
-            value : -2
+            value: -2
         }, {
-            "app" : "",
+            "app": "",
             "axis": CATEGORIES[3],
-            value : -2
+            value: -2
         }, {
-            "app" : "",
+            "app": "",
             "axis": CATEGORIES[4],
-            value : -2
-        }, {
-            "app" : "",
-            "axis": CATEGORIES[5],
-            value : -2
+            value: -2
         }]
     ];
 
     ID_AVERAGE_CATEGORIES = 100;
 
     /* User-level variables */
-    pageTitle = "Infrastructure as Code Maturity Gap Analysis: Large Financial Institution, Inc.";
+    pageTitle = "IaC Maturity Gap Analysis: First Federated Bank";
     legendTitle = "Banking Platforms";
     averageTitle = "Average Maturity - All Systems";
-    referenceLink = "http://en.wikipedia.org/wiki/Continuous_delivery";
-    referenceLinkTitle = "Sample Link to Analysis Details";
+    referenceLink = "https://github.com/garystafford";
+    referenceLinkTitle = "Gary A. Stafford, 2017";
 
     applications = [
+        "Commercial Lending",
         "Core Banking",
         "Internet Banking",
-        "Risk Management",
+        "Investment Services",
         "Mobile Banking",
+        "Risk Management"
     ];
 
     maturityData = [
-        [{ //Core Banking Platform
-            "app"  : applications[0],
-            "axis" : CATEGORIES[0],
+        [{ //Commercial Lending
+            "app": applications[0],
+            "axis": CATEGORIES[0],
             "value": -1
         }, {
-            "app"  : applications[0],
-            "axis" : CATEGORIES[1],
-            "value": -1
-        }, {
-            "app"  : applications[0],
-            "axis" : CATEGORIES[2],
+            "app": applications[0],
+            "axis": CATEGORIES[1],
             "value": 1
         }, {
-            "app"  : applications[0],
-            "axis" : CATEGORIES[3],
+            "app": applications[0],
+            "axis": CATEGORIES[2],
             "value": -1
         }, {
-            "app"  : applications[0],
-            "axis" : CATEGORIES[4],
+            "app": applications[0],
+            "axis": CATEGORIES[3],
             "value": 0
         }, {
-            "app"  : applications[0],
-            "axis" : CATEGORIES[5],
+            "app": applications[0],
+            "axis": CATEGORIES[4],
             "value": 2
         }],
-        [{ //Internet Banking Platform
-            "app"  : applications[1],
-            "axis" : CATEGORIES[0],
-            "value": 1
+        [{ //Core Banking
+            "app": applications[1],
+            "axis": CATEGORIES[0],
+            "value": 3
         }, {
-            "app"  : applications[1],
-            "axis" : CATEGORIES[1],
-            "value": 0
-        }, {
-            "app"  : applications[1],
-            "axis" : CATEGORIES[2],
+            "app": applications[1],
+            "axis": CATEGORIES[1],
             "value": 2
         }, {
-            "app"  : applications[1],
-            "axis" : CATEGORIES[3],
+            "app": applications[1],
+            "axis": CATEGORIES[2],
             "value": -1
         }, {
-            "app"  : applications[1],
-            "axis" : CATEGORIES[4],
+            "app": applications[1],
+            "axis": CATEGORIES[3],
             "value": 1
         }, {
-            "app"  : applications[1],
-            "axis" : CATEGORIES[5],
+            "app": applications[1],
+            "axis": CATEGORIES[4],
             "value": 0
         }],
-        [{ //Risk Management Platform
-            "app"  : applications[2],
-            "axis" : CATEGORIES[0],
-            "value": 0
+        [{ //Internet Banking
+            "app": applications[2],
+            "axis": CATEGORIES[0],
+            "value": 1
         }, {
-            "app"  : applications[2],
-            "axis" : CATEGORIES[1],
+            "app": applications[2],
+            "axis": CATEGORIES[1],
+            "value": 2
+        }, {
+            "app": applications[2],
+            "axis": CATEGORIES[2],
             "value": -1
         }, {
-            "app"  : applications[2],
-            "axis" : CATEGORIES[2],
-            "value": 1
-        }, {
-            "app"  : applications[2],
-            "axis" : CATEGORIES[3],
-            "value": 1
-        }, {
-            "app"  : applications[2],
-            "axis" : CATEGORIES[4],
+            "app": applications[2],
+            "axis": CATEGORIES[3],
             "value": 0
         }, {
-            "app"  : applications[2],
-            "axis" : CATEGORIES[5],
+            "app": applications[2],
+            "axis": CATEGORIES[4],
+            "value": 2
+        }],
+        [{ //Investment Services
+            "app": applications[3],
+            "axis": CATEGORIES[0],
+            "value": 1
+        }, {
+            "app": applications[3],
+            "axis": CATEGORIES[1],
+            "value": 2
+        }, {
+            "app": applications[3],
+            "axis": CATEGORIES[2],
+            "value": 1
+        }, {
+            "app": applications[3],
+            "axis": CATEGORIES[3],
+            "value": 2
+        }, {
+            "app": applications[3],
+            "axis": CATEGORIES[4],
+            "value": -1
+        }],
+        [{ //Mobile Banking
+            "app": applications[3],
+            "axis": CATEGORIES[0],
+            "value": 0
+        }, {
+            "app": applications[3],
+            "axis": CATEGORIES[1],
+            "value": 2
+        }, {
+            "app": applications[3],
+            "axis": CATEGORIES[2],
+            "value": 1
+        }, {
+            "app": applications[3],
+            "axis": CATEGORIES[3],
+            "value": -1
+        }, {
+            "app": applications[3],
+            "axis": CATEGORIES[4],
             "value": 0
         }],
-        [{ //Mobile Banking Platform
-            "app"  : applications[3],
-            "axis" : CATEGORIES[0],
-            "value": 2
-        }, {
-            "app"  : applications[3],
-            "axis" : CATEGORIES[1],
-            "value": 0
-        }, {
-            "app"  : applications[3],
-            "axis" : CATEGORIES[2],
-            "value": 0
-        }, {
-            "app"  : applications[3],
-            "axis" : CATEGORIES[3],
-            "value": 2
-        }, {
-            "app"  : applications[3],
-            "axis" : CATEGORIES[4],
+        [{ //Risk Management
+            "app": applications[3],
+            "axis": CATEGORIES[0],
             "value": 1
         }, {
-            "app"  : applications[3],
-            "axis" : CATEGORIES[5],
+            "app": applications[3],
+            "axis": CATEGORIES[1],
+            "value": 1
+        }, {
+            "app": applications[3],
+            "axis": CATEGORIES[2],
             "value": -1
+        }, {
+            "app": applications[3],
+            "axis": CATEGORIES[3],
+            "value": 0
+        }, {
+            "app": applications[3],
+            "axis": CATEGORIES[4],
+            "value": 2
         }]
     ];
 
     return {
-        pageTitle          : pageTitle,
-        legendTitle        : legendTitle,
-        averageTitle       : averageTitle,
+        pageTitle: pageTitle,
+        legendTitle: legendTitle,
+        averageTitle: averageTitle,
         idAverageCategories: ID_AVERAGE_CATEGORIES,
-        referenceLink      : referenceLink,
-        referenceLinkTitle : referenceLinkTitle,
-        maturityLevels     : MATURITY_LEVELS,
-        categories         : CATEGORIES,
-        emptyDataSet       : EMPTY_DATASET,
-        applications       : applications,
-        maturityData       : maturityData
+        referenceLink: referenceLink,
+        referenceLinkTitle: referenceLinkTitle,
+        maturityLevels: MATURITY_LEVELS,
+        categoryCount: CATEGORY_COUNT,
+        categories: CATEGORIES,
+        emptyDataSet: EMPTY_DATASET,
+        applications: applications,
+        maturityData: maturityData
     };
 });
