@@ -1,6 +1,6 @@
 # CD Maturity Model - Gap Analysis Visualization Tool
 
-Gap analysis visualization tool for the '[Continuous Delivery Maturity Model](https://secure.surveymonkey.com/_resources/28183/23008183/bf361750-7418-458f-85a6-6c07333e4986.png)'. Based on model from the book, '**Continuous Delivery:** _Reliable Software Releases through Build, Test, and Deployment Automation_', by Jez Humble and David Farley, available on [Amazon](http://www.amazon.com/dp/0321601912). Allows the comparison of the six categories of the CD Maturity Model across multiple applications platforms.
+Gap analysis visualization tool for the '[Continuous Delivery Maturity Model](https://secure.surveymonkey.com/_resources/28183/23008183/bf361750-7418-458f-85a6-6c07333e4986.png)'. Based on model from the book, '**Continuous Delivery:** _Reliable Software Releases through Build, Test, and Deployment Automation_', by Jez Humble and David Farley, available on [Amazon](http://www.amazon.com/dp/0321601912). Provides a visual comparison of the six categories of the CD Maturity Model, across multiple applications platforms, business units, or logical divisions within the SDLC.
 
 [![CD Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/CD_example_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/CD_example.png?raw=true)
 
@@ -64,7 +64,7 @@ To install the project locally:
 
 ```bash
 git clone https://github.com/garystafford/cd-maturity-model.git \
-&& cd cd-maturity-model
+  && cd cd-maturity-model
 npm install -g requirejs
 ```
 
@@ -74,8 +74,8 @@ Module-based project uses [RequireJS](http://requirejs.org/). After making any j
 
 ```bash
 cp -f js/require/require.min.js dist/ \
-&& node build/r.js -o build/build.js \
-&& node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
+  && node build/r.js -o build/build.js \
+  && node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
 ```
 
 [![Optimizing Project](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/optimizing_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/optimizing.png?raw=true)
