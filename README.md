@@ -64,10 +64,10 @@ Module-based project uses [RequireJS](http://requirejs.org/). After making any j
 
 ```bash
 npm install -g requirejs
- cd cd-maturity-model
- cp -f js/require/require.min.js dist/
- node build/r.js -o build/build.js
- node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
+ d cd-maturity-model
+cp -f js/require/require.min.js dist/
+node build/r.js -o build/build.js
+node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
 ```
 
 [![Optimizing Project](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/optimizing_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/optimizing.png?raw=true)

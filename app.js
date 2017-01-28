@@ -1,5 +1,5 @@
 /**
- * Created by Gary A. Stafford on 2/8/15.
+ * Created by Gary A. Stafford on 2/8/15
  * https://github.com/garystafford/cd-maturity-model
  */
 

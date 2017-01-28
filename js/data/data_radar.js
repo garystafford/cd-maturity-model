@@ -1,5 +1,6 @@
 /**
- * Created by Gary A. Stafford on 1/29/15.
+ * CD Maturity Gap Analysis Sample Data
+ * Created by Gary A. Stafford on 1/29/15
  * https://github.com/garystafford/cd-maturity-model
  */
 

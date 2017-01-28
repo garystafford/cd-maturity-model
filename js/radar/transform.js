@@ -1,5 +1,5 @@
 /**
- * Created by Gary A. Stafford on 1/29/15.
+ * Created by Gary A. Stafford on 1/29/15
  * https://github.com/garystafford/cd-maturity-model
  *
  * Transforms CD maturity scale of -2 to 3 to 0 to 100
