@@ -1,6 +1,8 @@
 # CD Maturity Model - Gap Analysis Visualization Tool
 
-Gap analysis visualization tool for the '[Continuous Delivery Maturity Model](https://secure.surveymonkey.com/_resources/28183/23008183/bf361750-7418-458f-85a6-6c07333e4986.png)'. Based on model from the book, '**Continuous Delivery:** _Reliable Software Releases through Build, Test, and Deployment Automation_', by Jez Humble and David Farley, available on [Amazon](http://www.amazon.com/dp/0321601912). Provides a visual comparison of the six categories of the CD Maturity Model, across multiple applications platforms, business units, or logical divisions within the SDLC.
+A gap analysis visualization tool for the '[Continuous Delivery Maturity Model](https://secure.surveymonkey.com/_resources/28183/23008183/bf361750-7418-458f-85a6-6c07333e4986.png)'. Based on model from the book, '**Continuous Delivery:** _Reliable Software Releases through Build, Test, and Deployment Automation_', by Jez Humble and David Farley, available on [Amazon](http://www.amazon.com/dp/0321601912). This JavaScript-based application provides a visual comparison, based on a radar graph, also known as a spider graph, of the six areas of practice of the CD Maturity Model, across multiple applications platforms, business units, or functional divisions within your SDLC.
+
+The Maturity Model Gap Analysis Tool is applicable to many discipline, not only Continuous Delivery. The application is built to be easily adaptable, by changing the data file.
 
 [![CD Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/CD_example_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/CD_example.png?raw=true)
 
@@ -86,11 +88,11 @@ To host the project, after optimizing, you only need the following items:
 
 - `index.html` file
 - `favicon.ico` file
-- `dist` directory
+- `dist/` directory
 
 ## Hosting Project on Apache with Docker
 
-The project includes a `Dockerfile` for local development and hosting of the app, on Apache web server, in a Docker container. After running the 'RequireJS Optimization' commands above, then:
+The project includes a `Dockerfile` for local development and hosting of the app, on Apache web server, in a Docker container. After running the 'RequireJS Optimization' commands above:
 
 ```bash
 docker build -t apache2 .
@@ -114,7 +116,7 @@ cp -f js/require/require.min.js dist/ \
 
 ## Infrastructure as Code Maturity Model
 
-The Maturity Model Gap Analysis Tool is applicable to many discipline. The application is built to be easily adaptable. Recently, with the support and feedback of my peers, I've began to developed and refine the [Infrastructure as Code (IaC) Maturity Model](https://programmaticponderings.com/2016/11/25/infrastructure-as-code-maturity-model/). The IaC model is based on five areas of practice.
+The Maturity Model Gap Analysis Tool is applicable to many discipline, not only Continuous Delivery. The application is built to be easily adaptable, by changing the data file. Recently, with the support and feedback of my peers, I've developed the [Infrastructure as Code (IaC) Maturity Model](https://programmaticponderings.com/2016/11/25/infrastructure-as-code-maturity-model/). The IaC model is based on five areas of practice.
 
 [![IaC Maturity Model](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_Maturity_Model_Text_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_Maturity_Model_Text.pdf)
 
