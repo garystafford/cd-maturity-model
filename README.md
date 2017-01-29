@@ -66,7 +66,7 @@ maturityData: [
 
 ## Quick Start
 
-This project requires Node. To install this project locally, `git clone` the `requirejs` branch from [GitHub](https://github.com/garystafford/cd-maturity-model/tree/requirejs):
+To install this project locally, `git clone` the `requirejs` branch from [GitHub](https://github.com/garystafford/cd-maturity-model/tree/requirejs):
 
 ```bash
 git clone --branch requirejs --single-branch --depth 1 \
@@ -76,7 +76,7 @@ cd cd-maturity-model
 
 ## RequireJS Optimization
 
-Module-based project uses [RequireJS](http://requirejs.org/). After making any javascript or css changes, optimize the project using [RequireJS Optimizer](http://requirejs.org/docs/optimization.html). Optimizer combines related scripts together into build layers and minifies them via [UglifyJS](https://github.com/mishoo/UglifyJS) (the default). Requires [Node.js](http://nodejs.org).
+Module-based project uses [RequireJS](http://requirejs.org/). After making any javascript or css changes, optimize the project using [RequireJS Optimizer](http://requirejs.org/docs/optimization.html). Optimizer combines related scripts together into build layers and minifies them via [UglifyJS](https://github.com/mishoo/UglifyJS) (the default). This project requires [Node.js](http://nodejs.org).
 
 ```bash
 npm install -g requirejs
