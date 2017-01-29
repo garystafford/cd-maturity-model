@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/garystafford/cd-maturity-model.svg?branch=master)](https://travis-ci.org/garystafford/cd-maturity-model)
+
 # CD Maturity Model - Gap Analysis Visualization Tool
 
 A gap analysis visualization tool for the '[Continuous Delivery Maturity Model](https://secure.surveymonkey.com/_resources/28183/23008183/bf361750-7418-458f-85a6-6c07333e4986.png)'. Based on model from the book, '**Continuous Delivery:** _Reliable Software Releases through Build, Test, and Deployment Automation_', by Jez Humble and David Farley, available on [Amazon](http://www.amazon.com/dp/0321601912).
@@ -30,7 +32,7 @@ Module-based project uses [RequireJS](http://requirejs.org/). After making any j
 
 ```bash
 npm install -g requirejs
-mkdir dist/
+mkdir dist/ || echo 'dist/ folder already exists...'
 cp -f js/require/require.min.js dist/
 node build/r.js -o build/build.js
 node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
