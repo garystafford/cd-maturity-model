@@ -92,7 +92,6 @@ maturityData: [
 To host this project, after optimizing, you only need the following items:
 
 - `index.html` file
-- `favicon.ico` file
 - `dist/` directory
 
 ## Hosting Project on Apache with Docker
