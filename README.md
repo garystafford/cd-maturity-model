@@ -10,11 +10,34 @@ The Maturity Model Gap Analysis Tool is applicable to many discipline, not only 
 
 <!-- [![CD Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/CD_example_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/CD_example.png?raw=true) -->
 
+## Quick Start
+
+To install this project locally, `git clone` the `requirejs` branch from [GitHub](https://github.com/garystafford/cd-maturity-model/tree/requirejs):
+
+```bash
+git clone --branch requirejs --single-branch --depth 1 \
+  https://github.com/garystafford/cd-maturity-model.git
+cd cd-maturity-model
+```
+
 ## D3.js Data-Driven Documents
 
 The application is a browser-based tool, which uses the [d3](http://d3js.org/) JavaScript library. Visualizations are rendered using JavaScript and [SVG](http://en.wikipedia.org/wiki/Scalable_Vector_Graphics).
 
-## Data
+## RequireJS Optimization
+
+Module-based project uses [RequireJS](http://requirejs.org/). After making any javascript or css changes, optimize the project using [RequireJS Optimizer](http://requirejs.org/docs/optimization.html). Optimizer combines related scripts together into build layers and minifies them via [UglifyJS](https://github.com/mishoo/UglifyJS) (the default). This project requires [Node.js](http://nodejs.org).
+
+```bash
+npm install -g requirejs
+cp -f js/require/require.min.js dist/
+node build/r.js -o build/build.js
+node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
+```
+
+[![Optimizing Project](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/optimizing_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/optimizing.png?raw=true)
+
+## Data-Driven Visualization
 
 Currently, the CD Maturity Model data is stored in the `js/data/data_radar.js` file, as an array of JavaScript object literals. It would be very easy to convert the project to use a data source, such as a static JSON or YAML file, or MongoDB database.
 
@@ -63,29 +86,6 @@ maturityData: [
     }]
 ];
 ```
-
-## Quick Start
-
-To install this project locally, `git clone` the `requirejs` branch from [GitHub](https://github.com/garystafford/cd-maturity-model/tree/requirejs):
-
-```bash
-git clone --branch requirejs --single-branch --depth 1 \
-  https://github.com/garystafford/cd-maturity-model.git
-cd cd-maturity-model
-```
-
-## RequireJS Optimization
-
-Module-based project uses [RequireJS](http://requirejs.org/). After making any javascript or css changes, optimize the project using [RequireJS Optimizer](http://requirejs.org/docs/optimization.html). Optimizer combines related scripts together into build layers and minifies them via [UglifyJS](https://github.com/mishoo/UglifyJS) (the default). This project requires [Node.js](http://nodejs.org).
-
-```bash
-npm install -g requirejs
-cp -f js/require/require.min.js dist/
-node build/r.js -o build/build.js
-node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
-```
-
-[![Optimizing Project](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/optimizing_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/optimizing.png?raw=true)
 
 ## Hosting Project
 
