@@ -34,6 +34,7 @@ Module-based project uses [RequireJS](http://requirejs.org/). After making any j
 npm install -g requirejs
 mkdir dist/ || echo 'dist/ folder already exists...'
 cp -f js/require/require.min.js dist/
+cp -f favicon.png dist/
 node build/r.js -o build/build.js
 node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
 ```
@@ -125,6 +126,7 @@ To quickly rebuild and re-containerize the application, during development:
 ```bash
 rm -rf dist/* \
   && cp -f js/require/require.min.js dist/ \
+  && cp -f favicon.png dist/ \
   && node build/r.js -o build/build.js \
   && node build/r.js -o cssIn=css/radar.css out=dist/main-built.css \
   && docker rm -f cd-maturity-model \
