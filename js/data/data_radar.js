@@ -94,8 +94,8 @@ define(function() {
     pageTitle = "CD Maturity Gap Analysis: First Federated Bank";
     legendTitle = "Banking Platforms";
     averageTitle = "Average Maturity - All Systems";
-    referenceLink = "https://github.com/garystafford";
-    referenceLinkTitle = "Gary A. Stafford, 2017";
+    referenceLink = "https://github.com/garystafford/cd-maturity-model";
+    referenceLinkTitle = "Gary A. Stafford - 2017";
 
     applications = [
         "Core Banking Application",
