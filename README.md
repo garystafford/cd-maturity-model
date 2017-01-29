@@ -6,7 +6,7 @@ A gap analysis visualization tool for the '[Continuous Delivery Maturity Model](
 
 This JavaScript-based application displays a visual comparison, based on a radar graph, also known as a spider graph, of the six areas of practice of the CD Maturity Model, across multiple applications platforms, business units, or functional divisions within your SDLC.
 
-The Maturity Model Gap Analysis Tool is applicable to many discipline, not only Continuous Delivery. The application is built to be fully configurable and easily adaptable, by modifying the data file (`js/data/data_radar.js`). The default data file contains a sample data set, based on a fictions financial institution gap analysis.
+The Maturity Model Gap Analysis Tool is applicable to many discipline, not only Continuous Delivery. The application is built to be fully configurable and easily adaptable, by modifying the data file (`js/data/data_radar.js`). The default data file contains a sample data set, based on a fictions financial institution's gap analysis.
 
 [![CD Maturity Model - Gap Analysis Visualization Tool](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/CD_Maturity_Model_Video.jpg)](http://www.youtube.com/watch?v=YWGNw6VvKBc "CD Maturity Model - Gap Analysis Visualization Tool")
 
@@ -115,7 +115,7 @@ The CD Maturity Model can be easily adapted to the evolving [Infrastructure as C
 
 [![IaC Maturity Model](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_Maturity_Model_Text_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_Maturity_Model_Text.pdf)
 
-This project now includes a second data file (`js/data/iac_radar.js`), based on the IaC Maturity Model. To use IaC sample data, rename the file to `data_radar.js`; it will be automatically included in the build. Alternately, change the name of data file that gets included, by modifying the `build/build.js` and `js/radar/common.js` files. The data file contains a sample data set, based on a fictions financial institution gap analysis.
+This project now includes a second data file (`js/data/iac_radar.js`), based on the IaC Maturity Model. To use IaC sample data, rename the file to `data_radar.js`; it will be automatically included in the build. Alternately, change the name of data file that gets included, by modifying the `build/build.js` and `js/radar/common.js` files. The data file contains a sample data set, based on a fictions financial institution's gap analysis.
 
 [![IaC Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_example_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_example.png?raw=true)
 
