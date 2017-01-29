@@ -4,13 +4,13 @@ Gap analysis visualization tool for the '[Continuous Delivery Maturity Model](ht
 
 [![CD Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/CD_example_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/CD_example.png?raw=true)
 
-## Technology
+## D3.js Data-Driven Documents
 
-Browser-based tool, using [d3](http://d3js.org/) JavaScript library. Visualizations rendered using JavaScript and [SVG](http://en.wikipedia.org/wiki/Scalable_Vector_Graphics).
+The application is a browser-based tool, which uses the [d3](http://d3js.org/) JavaScript library. Visualizations are rendered using JavaScript and [SVG](http://en.wikipedia.org/wiki/Scalable_Vector_Graphics).
 
 ## Data
 
-Currently, data is stored in the `data_radar.js` file as an array of JavaScript object literals. It would be very easy to move the datasource to a static JSON file, or better yet a database, like MongoDB.
+Currently, data is stored in the `js/data/data_radar.js` file as an array of JavaScript object literals. It would be very easy to convert the project to use a data source, such as a static JSON file or MongoDB.
 
 ```javascript
 CATEGORIES = [
@@ -60,12 +60,11 @@ maturityData: [
 
 ## Quick Start
 
-To install the project locally:
+The project requires Node to be installed. To install the project locally:
 
 ```bash
-git clone https://github.com/garystafford/cd-maturity-model.git \
-  && cd cd-maturity-model
-npm install -g requirejs
+git clone https://github.com/garystafford/cd-maturity-model.git
+cd cd-maturity-model
 ```
 
 ## RequireJS Optimization
@@ -73,9 +72,10 @@ npm install -g requirejs
 Module-based project uses [RequireJS](http://requirejs.org/). After making any javascript or css changes, optimize the project using [RequireJS Optimizer](http://requirejs.org/docs/optimization.html). Optimizer combines related scripts together into build layers and minifies them via [UglifyJS](https://github.com/mishoo/UglifyJS) (the default). Requires [Node.js](http://nodejs.org).
 
 ```bash
-cp -f js/require/require.min.js dist/ \
-  && node build/r.js -o build/build.js \
-  && node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
+npm install -g requirejs
+cp -f js/require/require.min.js dist/
+node build/r.js -o build/build.js
+node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
 ```
 
 [![Optimizing Project](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/optimizing_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/optimizing.png?raw=true)
