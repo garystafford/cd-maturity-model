@@ -120,7 +120,8 @@ This project now includes a second data file (`js/data/iac_radar.js`), based on 
 To quickly rebuild and re-containerize the application, during development:
 
 ```bash
-cp -f js/require/require.min.js dist/ \
+rm -rf dist/* \
+  && cp -f js/require/require.min.js dist/ \
   && node build/r.js -o build/build.js \
   && node build/r.js -o cssIn=css/radar.css out=dist/main-built.css \
   && docker rm -f cd-maturity-model \
