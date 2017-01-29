@@ -1,8 +1,10 @@
 # CD Maturity Model - Gap Analysis Visualization Tool
 
-A gap analysis visualization tool for the '[Continuous Delivery Maturity Model](https://secure.surveymonkey.com/_resources/28183/23008183/bf361750-7418-458f-85a6-6c07333e4986.png)'. Based on model from the book, '**Continuous Delivery:** _Reliable Software Releases through Build, Test, and Deployment Automation_', by Jez Humble and David Farley, available on [Amazon](http://www.amazon.com/dp/0321601912). This JavaScript-based application provides a visual comparison, based on a radar graph, also known as a spider graph, of the six areas of practice of the CD Maturity Model, across multiple applications platforms, business units, or functional divisions within your SDLC.
+A gap analysis visualization tool for the '[Continuous Delivery Maturity Model](https://secure.surveymonkey.com/_resources/28183/23008183/bf361750-7418-458f-85a6-6c07333e4986.png)'. Based on model from the book, '**Continuous Delivery:** _Reliable Software Releases through Build, Test, and Deployment Automation_', by Jez Humble and David Farley, available on [Amazon](http://www.amazon.com/dp/0321601912).
 
-The Maturity Model Gap Analysis Tool is applicable to many discipline, not only Continuous Delivery. The application is built to be easily adaptable, by changing the data file.
+This JavaScript-based application displays a visual comparison, based on a radar graph, also known as a spider graph, of the six areas of practice of the CD Maturity Model, across multiple applications platforms, business units, or functional divisions within your SDLC.
+
+The Maturity Model Gap Analysis Tool is applicable to many discipline, not only Continuous Delivery. The application is built to be fully configurable and easily adaptable, by modifying the data file (`js/data/data_radar.js`).
 
 [![CD Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/CD_example_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/CD_example.png?raw=true)
 
@@ -12,7 +14,7 @@ The application is a browser-based tool, which uses the [d3](http://d3js.org/) J
 
 ## Data
 
-Currently, data is stored in the `js/data/data_radar.js` file as an array of JavaScript object literals. It would be very easy to convert the project to use a data source, such as a static JSON file or MongoDB.
+Currently, the CD Maturity Model data is stored in the `js/data/data_radar.js` file, as an array of JavaScript object literals. It would be very easy to convert the project to use a data source, such as a static JSON or YAML file, or MongoDB database.
 
 ```javascript
 CATEGORIES = [
@@ -62,7 +64,7 @@ maturityData: [
 
 ## Quick Start
 
-The project requires Node to be installed. To install the project locally:
+This project requires Node. To install this project locally:
 
 ```bash
 git clone https://github.com/garystafford/cd-maturity-model.git
@@ -84,7 +86,7 @@ node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
 
 ## Hosting Project
 
-To host the project, after optimizing, you only need the following items:
+To host this project, after optimizing, you only need the following items:
 
 - `index.html` file
 - `favicon.ico` file
@@ -92,18 +94,28 @@ To host the project, after optimizing, you only need the following items:
 
 ## Hosting Project on Apache with Docker
 
-The project includes a `Dockerfile` for local development and hosting of the app, on Apache web server, in a Docker container. After running the 'RequireJS Optimization' commands above:
+This project includes a `Dockerfile` for local development and hosting of the app, on Apache web server, in a Docker container. After running the 'RequireJS Optimization' commands above:
 
 ```bash
 docker build -t apache2 .
-docker run -dit --name cd-maturity-model -p 8082:80 apache2
+docker run --name cd-maturity-model -p 8082:80 apache2 -d
 ```
 
 Point your browser to `http://localhost:8082/`
 
+## Infrastructure as Code Maturity Model
+
+The CD Maturity Model can be easily adapted to the evolving [Infrastructure as Code (IaC) Maturity Model](https://programmaticponderings.com/2016/11/25/infrastructure-as-code-maturity-model/).
+
+[![IaC Maturity Model](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_Maturity_Model_Text_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_Maturity_Model_Text.pdf)
+
+This project now includes a second data file (`js/data/iac_radar.js`), based on the IaC Maturity Model. To use IaC sample data, rename the file to `data_radar.js`; it will be automatically included in the build. Alternately, change the name of data file that gets included, by modifying the `build/build.js` and `js/radar/common.js` files.
+
+[![IaC Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_example_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_example.png?raw=true)
+
 ## Rapid Development
 
-To quickly rebuild and re-containerize the app:
+To quickly rebuild and re-containerize the application, during development:
 
 ```bash
 cp -f js/require/require.min.js dist/ \
@@ -111,18 +123,8 @@ cp -f js/require/require.min.js dist/ \
   && node build/r.js -o cssIn=css/radar.css out=dist/main-built.css \
   && docker rm -f cd-maturity-model \
   && docker build -t apache2 . \
-  && docker run -d --name cd-maturity-model -p 8082:80 apache2
+  && docker run --name cd-maturity-model -p 8082:80 apache2 -d
 ```
-
-## Infrastructure as Code Maturity Model
-
-The Maturity Model Gap Analysis Tool is applicable to many discipline, not only Continuous Delivery. The application is built to be easily adaptable, by changing the data file. Recently, with the support and feedback of my peers, I've developed the [Infrastructure as Code (IaC) Maturity Model](https://programmaticponderings.com/2016/11/25/infrastructure-as-code-maturity-model/). The IaC model is based on five areas of practice.
-
-[![IaC Maturity Model](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_Maturity_Model_Text_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_Maturity_Model_Text.pdf)
-
-This project now includes sample data (`js/data/iac_radar.js`), based on the IaC Maturity Model. You can rename it to `data_radar.js`, to load it automatically. Alternately, change the name of data file that gets loaded, by modifying the `build/build.js` and `js/radar/common.js` files.
-
-[![IaC Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_example_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_example.png?raw=true)
 
 ## Helpful Links
 
