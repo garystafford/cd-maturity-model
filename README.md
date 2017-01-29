@@ -66,10 +66,11 @@ maturityData: [
 
 ## Quick Start
 
-This project requires Node. To install this project locally:
+This project requires Node. To install this project locally, `git clone` the `requirejs` branch from GitHub:
 
 ```bash
-git clone https://github.com/garystafford/cd-maturity-model.git
+git clone --branch requirejs --single-branch --depth 1 \
+  https://github.com/garystafford/cd-maturity-model.git
 cd cd-maturity-model
 ```
 
