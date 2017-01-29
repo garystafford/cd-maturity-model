@@ -30,6 +30,7 @@ Module-based project uses [RequireJS](http://requirejs.org/). After making any j
 
 ```bash
 npm install -g requirejs
+mkdir dist/
 cp -f js/require/require.min.js dist/
 node build/r.js -o build/build.js
 node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
