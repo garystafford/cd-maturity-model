@@ -116,7 +116,7 @@ cp -f js/require/require.min.js dist/ \
 
 The Maturity Model Gap Analysis Tool is applicable to many discipline. The application is built to be easily adaptable. Recently, with the support and feedback of my peers, I've began to developed and refine the [Infrastructure as Code (IaC) Maturity Model](https://programmaticponderings.com/2016/11/25/infrastructure-as-code-maturity-model/). The IaC model is based on five areas of practice.
 
-[![IaC Maturity Model](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_Maturity_Model_Text_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_Maturity_Model_Text.pdf?raw=true)
+[![IaC Maturity Model](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_Maturity_Model_Text_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_Maturity_Model_Text.pdf)
 
 This project now includes sample data (`js/data/iac_radar.js`), based on the IaC Maturity Model. You can rename it to `data_radar.js`, to load it automatically. Alternately, change the name of data file that gets loaded, by modifying the `build/build.js` and `js/radar/common.js` files.
 
