@@ -98,7 +98,7 @@ This project includes a `Dockerfile` for local development and hosting of the ap
 
 ```bash
 docker build -t apache2 .
-docker run --name cd-maturity-model -p 8082:80 apache2 -d
+docker run -d --name cd-maturity-model -p 8082:80 apache2
 ```
 
 Point your browser to `http://localhost:8082/`
@@ -123,7 +123,7 @@ cp -f js/require/require.min.js dist/ \
   && node build/r.js -o cssIn=css/radar.css out=dist/main-built.css \
   && docker rm -f cd-maturity-model \
   && docker build -t apache2 . \
-  && docker run --name cd-maturity-model -p 8082:80 apache2 -d
+  && docker run -d --name cd-maturity-model -p 8082:80 apache2
 ```
 
 ## Helpful Links
