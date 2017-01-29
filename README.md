@@ -6,7 +6,9 @@ This JavaScript-based application displays a visual comparison, based on a radar
 
 The Maturity Model Gap Analysis Tool is applicable to many discipline, not only Continuous Delivery. The application is built to be fully configurable and easily adaptable, by modifying the data file (`js/data/data_radar.js`).
 
-[![CD Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/CD_example_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/CD_example.png?raw=true)
+[![CD Maturity Model - Gap Analysis Visualization Tool](http://img.youtube.com/vi/YWGNw6VvKBc/0.jpg)](http://www.youtube.com/watch?v=YWGNw6VvKBc "CD Maturity Model - Gap Analysis Visualization Tool")
+
+<!-- [![CD Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/CD_example_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/CD_example.png?raw=true) -->
 
 ## D3.js Data-Driven Documents
 
