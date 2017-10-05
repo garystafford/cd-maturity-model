@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/garystafford/cd-maturity-model.svg?branch=master)](https://travis-ci.org/garystafford/cd-maturity-model)
+[![Build Status](https://travis-ci.org/garystafford/cd-maturity-model.svg?branch=requirejs)](https://travis-ci.org/garystafford/cd-maturity-model)
 
 # CD Maturity Model - Gap Analysis Visualization Tool
 
