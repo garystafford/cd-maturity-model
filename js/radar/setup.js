@@ -15,9 +15,9 @@
  data, draw, enter, getAppNames, getCategoryAvgs, getElementById,
  getElementsByClassName, getLegendNames, getSelectedData, getSingleDataSet, h,
  height, htmlFor, id, idAverageCategories, indexOf, innerHTML, legendTitle, length,
- levels, maxValue, name, onclick, pageTitle, push, referenceLinkTitle,
- referenceLink, scale, select, selectAll, setAttribute, splice, style, text, type,
- value, w, width
+ levels, maxValue, name, onclick, pageTitle, push, referenceLinkTitle1,
+ referenceLinkTitle2, referenceLink1, referenceLink2, scale, select, selectAll,
+ setAttribute, splice, style, text, type, value, w, width
  */
 
 /*global d3, dataRadar, transform, document, radar, define */
@@ -49,11 +49,11 @@ define(["dataRadar", "d3", "./transform", "./radar"],
 
         //Options for the Radar chart, other than default
         config = {
-            w: 450,
-            h: 450,
+            w: 600,
+            h: 600,
             maxValue: 100,
             levels: 5,
-            ExtraWidthX: 550
+            ExtraWidthX: 650
         };
 
         //Initiate legend
@@ -265,7 +265,7 @@ define(["dataRadar", "d3", "./transform", "./radar"],
 
         createModelPopup = function() {
             var newPara = document.createElement("p");
-            newPara.innerHTML = "IaC Maturity Model";
+            newPara.innerHTML = dataRadar.referenceLinkTitle1;
             newPara.className = "footerLinks";
             newPara.addEventListener("click", function() {
                 if (document.getElementById("model").className === "showModel") {
@@ -295,8 +295,8 @@ define(["dataRadar", "d3", "./transform", "./radar"],
         createRefLink = function() {
             var newLink = document.createElement("a");
             newLink.className = "footerLinks";
-            newLink.setAttribute("href", dataRadar.referenceLink);
-            newLink.innerHTML = dataRadar.referenceLinkTitle;
+            newLink.setAttribute("href", dataRadar.referenceLink2);
+            newLink.innerHTML = dataRadar.referenceLinkTitle2;
             document.getElementById("footer")
                 .appendChild(newLink);
         };

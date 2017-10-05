@@ -44,8 +44,8 @@ define(["dataRadar", "d3", "./transform"],
             // Values can be overridden from setup.config object passed to draw.options param
             cfg = {
                 radius: 5,
-                w: 600,
-                h: 600,
+                w: 800,
+                h: 800,
                 factor: 1,
                 factorLegend: 0.85,
                 levels: 3,

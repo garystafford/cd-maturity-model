@@ -8,7 +8,8 @@
 /*properties
  app, applications, averageTitle, axis, categoryCount, categories, definition,
  emptyDataSet, idAverageCategories, legendTitle, maturityData, maturityLevels,
- pageTitle, referenceLink, referenceLinkTitle, score, value
+ pageTitle, referenceLink1, referenceLinkTitle1, referenceLink2, referenceLinkTitle2,
+ score, value
  */
 
 /*global define */
@@ -24,8 +25,10 @@ define(function() {
         pageTitle,
         legendTitle,
         averageTitle,
-        referenceLink,
-        referenceLinkTitle,
+        referenceLink1,
+        referenceLinkTitle1,
+        referenceLink2,
+        referenceLinkTitle2,
         maturityData;
 
     /* CONSTANTS */
@@ -89,8 +92,10 @@ define(function() {
     pageTitle = "IaC Maturity Gap Analysis: First Federated Bank";
     legendTitle = "Banking Platforms";
     averageTitle = "Average Maturity - All Systems";
-    referenceLink = "https://github.com/garystafford/cd-maturity-model";
-    referenceLinkTitle = "Gary A. Stafford - 2017";
+    referenceLink1 = "https://github.com/garystafford/cd-maturity-model";
+    referenceLinkTitle1 = "CD Maturity Model";
+    referenceLink2 = "https://github.com/garystafford/cd-maturity-model";
+    referenceLinkTitle2 = "Gary A. Stafford - 2017";
 
     applications = [
         "Commercial Lending",
@@ -187,44 +192,44 @@ define(function() {
             "value": -1
         }],
         [{ //Mobile Banking
-            "app": applications[3],
+            "app": applications[4],
             "axis": CATEGORIES[0],
             "value": 0
         }, {
-            "app": applications[3],
+            "app": applications[4],
             "axis": CATEGORIES[1],
             "value": 2
         }, {
-            "app": applications[3],
+            "app": applications[4],
             "axis": CATEGORIES[2],
             "value": 1
         }, {
-            "app": applications[3],
+            "app": applications[4],
             "axis": CATEGORIES[3],
             "value": -1
         }, {
-            "app": applications[3],
+            "app": applications[4],
             "axis": CATEGORIES[4],
             "value": 0
         }],
         [{ //Risk Management
-            "app": applications[3],
+            "app": applications[5],
             "axis": CATEGORIES[0],
             "value": 1
         }, {
-            "app": applications[3],
+            "app": applications[5],
             "axis": CATEGORIES[1],
             "value": 1
         }, {
-            "app": applications[3],
+            "app": applications[5],
             "axis": CATEGORIES[2],
             "value": -1
         }, {
-            "app": applications[3],
+            "app": applications[5],
             "axis": CATEGORIES[3],
             "value": 0
         }, {
-            "app": applications[3],
+            "app": applications[5],
             "axis": CATEGORIES[4],
             "value": 2
         }]
@@ -235,8 +240,10 @@ define(function() {
         legendTitle: legendTitle,
         averageTitle: averageTitle,
         idAverageCategories: ID_AVERAGE_CATEGORIES,
-        referenceLink: referenceLink,
-        referenceLinkTitle: referenceLinkTitle,
+        referenceLink1: referenceLink1,
+        referenceLinkTitle1: referenceLinkTitle1,
+        referenceLink2: referenceLink2,
+        referenceLinkTitle2: referenceLinkTitle2,
         maturityLevels: MATURITY_LEVELS,
         categoryCount: CATEGORY_COUNT,
         categories: CATEGORIES,

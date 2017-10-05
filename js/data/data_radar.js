@@ -5,11 +5,12 @@
  * https://github.com/garystafford/cd-maturity-model
  */
 
-/*properties
- app, applications, averageTitle, axis, categories, definition, emptyDataSet,
- idAverageCategories, legendTitle, maturityData, maturityLevels, pageTitle,
- referenceLink, referenceLinkTitle, score, value
- */
+ /*properties
+  app, applications, averageTitle, axis, categoryCount, categories, definition,
+  emptyDataSet, idAverageCategories, legendTitle, maturityData, maturityLevels,
+  pageTitle, referenceLink1, referenceLinkTitle1, referenceLink2, referenceLinkTitle2,
+  score, value
+  */
 
 /*global define */
 define(function() {
@@ -24,8 +25,10 @@ define(function() {
         pageTitle,
         legendTitle,
         averageTitle,
-        referenceLink,
-        referenceLinkTitle,
+        referenceLink1,
+        referenceLinkTitle1,
+        referenceLink2,
+        referenceLinkTitle2,
         maturityData;
 
     /* CONSTANTS */
@@ -94,8 +97,10 @@ define(function() {
     pageTitle = "CD Maturity Gap Analysis: First Federated Bank";
     legendTitle = "Banking Platforms";
     averageTitle = "Average Maturity - All Systems";
-    referenceLink = "https://github.com/garystafford/cd-maturity-model";
-    referenceLinkTitle = "Gary A. Stafford - 2017";
+    referenceLink1 = "https://github.com/garystafford/cd-maturity-model";
+    referenceLinkTitle1 = "CD Maturity Model";
+    referenceLink2 = "https://github.com/garystafford/cd-maturity-model";
+    referenceLinkTitle2 = "Gary A. Stafford - 2017";
 
     applications = [
         "Core Banking Application",
@@ -368,8 +373,10 @@ define(function() {
         legendTitle: legendTitle,
         averageTitle: averageTitle,
         idAverageCategories: ID_AVERAGE_CATEGORIES,
-        referenceLink: referenceLink,
-        referenceLinkTitle: referenceLinkTitle,
+        referenceLink1: referenceLink1,
+        referenceLinkTitle1: referenceLinkTitle1,
+        referenceLink2: referenceLink2,
+        referenceLinkTitle2: referenceLinkTitle2,
         maturityLevels: MATURITY_LEVELS,
         categories: CATEGORIES,
         emptyDataSet: EMPTY_DATASET,
