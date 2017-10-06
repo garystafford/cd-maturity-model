@@ -12,7 +12,7 @@ The Maturity Model Gap Analysis Tool is applicable to many discipline, not only 
 
 <!-- [![CD Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/CD_example_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/CD_example.png?raw=true) -->
 
-## Quick Start
+ ## Quick Start
 
 To install this project locally, `git clone` the `requirejs` branch from [GitHub](https://github.com/garystafford/cd-maturity-model/tree/requirejs):
 
@@ -109,19 +109,9 @@ docker run -d --name cd-maturity-model -p 8082:80 apache2
 
 Point your browser to `http://localhost:8082/`
 
-## Infrastructure as Code Maturity Model
-
-The CD Maturity Model can be easily adapted to the evolving [Infrastructure as Code (IaC) Maturity Model](https://programmaticponderings.com/2016/11/25/infrastructure-as-code-maturity-model/).
-
-[![IaC Maturity Model](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_Maturity_Model%20v2_1.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_Maturity_Model%20v2_1.pdf)
-
-This project now includes a second data file (`js/data/iac_radar.js`), based on the IaC Maturity Model. To use IaC sample data, rename the file to `data_radar.js`; it will be automatically included in the build. Alternately, change the name of data file that gets included, by modifying the `build/build.js` and `js/radar/common.js` files. The data file contains a sample data set, based on a fictions financial institution's gap analysis.
-
-[![IaC Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_example_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_example.png?raw=true)
-
 ## Rapid Development
 
-To quickly rebuild and re-containerize the application, during development:
+To quickly rebuild and re-containerize the application, during development, run the following:
 
 ```bash
 rm -rf dist/* \
@@ -133,6 +123,16 @@ rm -rf dist/* \
   && docker build -t apache2 . \
   && docker run -d --name cd-maturity-model -p 8082:80 apache2
 ```
+
+## Infrastructure as Code Maturity Model
+
+The CD Maturity Model can be easily adapted to the evolving [Infrastructure as Code (IaC) Maturity Model](https://programmaticponderings.com/2016/11/25/infrastructure-as-code-maturity-model/).
+
+[![IaC Maturity Model](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_Maturity_Model%20v2_1.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_Maturity_Model%20v2_1.pdf)
+
+This project now includes a second data file (`js/data/iac_radar.js`), based on the IaC Maturity Model. To use IaC sample data, rename the file to `data_radar.js`; it will be automatically included in the build. Alternately, change the name of data file that gets included, by modifying the `build/build.js` and `js/radar/common.js` files. The data file contains a sample data set, based on a fictions financial institution's gap analysis.
+
+[![IaC Gap Analysis](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_example_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/IaC_example.png?raw=true)
 
 ## Helpful Links
 
