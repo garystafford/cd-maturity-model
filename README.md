@@ -24,7 +24,7 @@ cd cd-maturity-model
 
 ## D3.js Data-Driven Documents
 
-The application is a browser-based tool, which uses the [d3](http://d3js.org/) JavaScript library. Visualizations are rendered using JavaScript and [SVG](http://en.wikipedia.org/wiki/Scalable_Vector_Graphics).
+The application is a browser-based tool, which uses the [D3.js](http://d3js.org/) JavaScript library. Visualizations are rendered using JavaScript and [SVG](http://en.wikipedia.org/wiki/Scalable_Vector_Graphics).
 
 ## RequireJS Optimization
 
