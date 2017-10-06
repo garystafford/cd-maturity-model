@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/garystafford/cd-maturity-model.svg?branch=requirejs)](https://travis-ci.org/garystafford/cd-maturity-model)
+[![Build Status](https://travis-ci.org/garystafford/cd-maturity-model.svg?branch=requirejs)](https://travis-ci.org/garystafford/cd-maturity-model)    [![Docker Status](https://dockerbuildbadges.quelltext.eu/status.svg?organization=garystafford&repository=cd-maturity-model)](https://github.com/garystafford/cd-maturity-model/tree/requirejs)
 
 # CD Maturity Model - Gap Analysis Visualization Tool
 
@@ -33,10 +33,10 @@ Module-based project uses [RequireJS](http://requirejs.org/). After making any j
 ```bash
 npm install -g requirejs
 mkdir dist/ || echo 'dist/ folder already exists...'
-cp -f js/require/require.min.js dist/
+cp -f js/require_2_3_5/require.min.js dist/
 cp -f favicon.png dist/
-node build/r.js -o build/build.js
-node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
+node build/r_2_3_5/r.js -o build/build.js
+node build/r_2_3_5/r.js -o cssIn=css/radar.css out=dist/main-built.css
 ```
 
 [![Optimizing Project](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/optimizing_thumbnail.png?raw=true)](https://github.com/garystafford/cd-maturity-model/blob/requirejs/images/optimizing.png?raw=true)
@@ -125,10 +125,10 @@ To quickly rebuild and re-containerize the application, during development:
 
 ```bash
 rm -rf dist/* \
-  && cp -f js/require/require.min.js dist/ \
+  && cp -f js/require_2_3_5/require.min.js dist/ \
   && cp -f favicon.png dist/ \
-  && node build/r.js -o build/build.js \
-  && node build/r.js -o cssIn=css/radar.css out=dist/main-built.css \
+  && node build/r_2_3_5/r.js -o build/build.js \
+  && node build/r_2_3_5/r.js -o cssIn=css/radar.css out=dist/main-built.css \
   && docker rm -f cd-maturity-model \
   && docker build -t apache2 . \
   && docker run -d --name cd-maturity-model -p 8082:80 apache2

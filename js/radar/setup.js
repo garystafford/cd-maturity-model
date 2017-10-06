@@ -42,7 +42,7 @@ define(["dataRadar", "d3", "./transform", "./radar"],
             createRefLink,
             initializePage;
 
-        colorScale = d3.scale.category10();
+        colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 
         //Tracks checkboxes
         checkboxes = [];
@@ -99,7 +99,7 @@ define(["dataRadar", "d3", "./transform", "./radar"],
                 .append("rect")
                 .attr("x", config.w + 175 - 65)
                 .attr("y", function(d, i) {
-                    return i * 20;
+                    return i * 25;
                 })
                 .attr("width", 10)
                 .attr("height", 10)
@@ -114,7 +114,7 @@ define(["dataRadar", "d3", "./transform", "./radar"],
                 .append("text")
                 .attr("x", config.w + 175 - 52)
                 .attr("y", function(d, i) {
-                    return i * 20 + 9;
+                    return i * 25 + 9;
                 })
                 .attr("font-size", "11px")
                 .attr("fill", "#737373")

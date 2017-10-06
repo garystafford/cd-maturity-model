@@ -17,7 +17,7 @@
     baseUrl               : "./../js/radar",
     "paths"               : {
         "app"    : "./../../app",
-        d3       : "./../d3/d3.min",
+        d3       : "./../d3_4_11_0/d3.min",
         // dataRadar: "./../data/iac_radar"
         dataRadar: "./../data/data_radar"
     },

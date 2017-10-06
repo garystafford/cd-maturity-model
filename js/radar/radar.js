@@ -57,7 +57,7 @@ define(["dataRadar", "d3", "./transform"],
                 TranslateY: 30,
                 ExtraWidthX: 100,
                 ExtraWidthY: 100,
-                color: d3.scale.category10()
+                color: d3.scaleOrdinal(d3.schemeCategory10)
             };
 
             // Functions used by this method
