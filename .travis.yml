@@ -4,6 +4,7 @@ node_js:
 script:
 - npm install -g requirejs
 - mkdir dist/ || echo 'dist/ folder already exists...'
-- cp -f js/require/require.min.js dist/
-- node build/r.js -o build/build.js
-- node build/r.js -o cssIn=css/radar.css out=dist/main-built.css
+- cp -f js/require_2_3_5/require.min.js dist/
+- cp -f favicon.png dist/
+- node build/r_2_3_5/r.js -o build/build.js
+- node build/r_2_3_5/r.js -o cssIn=css/radar.css out=dist/main-built.css
