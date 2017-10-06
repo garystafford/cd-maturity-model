@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/garystafford/cd-maturity-model.svg?branch=requirejs)](https://travis-ci.org/garystafford/cd-maturity-model)    [![Docker Status](https://dockerbuildbadges.quelltext.eu/status.svg?organization=garystafford&repository=cd-maturity-model)](https://github.com/garystafford/cd-maturity-model/tree/requirejs)
+[![Build Status](https://travis-ci.org/garystafford/cd-maturity-model.svg?branch=requirejs)](https://travis-ci.org/garystafford/cd-maturity-model)
 
 # CD Maturity Model - Gap Analysis Visualization Tool
 
